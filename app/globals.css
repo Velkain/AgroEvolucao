@@ -1,0 +1,315 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Fontes */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+
+  /* Tokens base */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Tokens temáticos da agricultura */
+  --color-earth: var(--earth);
+  --color-earth-foreground: var(--earth-foreground);
+  --color-wheat: var(--wheat);
+  --color-wheat-foreground: var(--wheat-foreground);
+  --color-wheat-ink: var(--wheat-ink);
+  --color-leaf: var(--leaf);
+  --color-leaf-ink: var(--leaf-ink);
+  --color-tech: var(--tech);
+  --color-tech-foreground: var(--tech-foreground);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Movimento — saída exponencial a partir de um estado já visível */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Elevação — tingida com a cor do texto, nunca preta.
+     Sobre fundo creme, sombra preta suja a cor. */
+  --elev-1: 0 2px 8px oklch(0.24 0.02 150 / 0.1);
+  --elev-2: 0 8px 24px oklch(0.24 0.02 150 / 0.14);
+  --elev-3: 0 20px 50px oklch(0.24 0.02 150 / 0.2);
+  --hairline: oklch(0.24 0.02 150 / 0.1);
+
+  --background: oklch(0.99 0.006 95);
+  --foreground: oklch(0.24 0.02 150);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.02 150);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.02 150);
+
+  /* Verde floresta — equivale a #43644c em sRGB */
+  --primary: oklch(0.47 0.055 152);
+  --primary-foreground: oklch(0.98 0.01 95);
+
+  --secondary: oklch(0.94 0.022 145);
+  --secondary-foreground: oklch(0.32 0.04 150);
+
+  --muted: oklch(0.96 0.01 120);
+  --muted-foreground: oklch(0.5 0.02 140);
+
+  /* Âmbar de colheita (destaque / química) */
+  --accent: oklch(0.72 0.13 72);
+  --accent-foreground: oklch(0.28 0.04 65);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.9 0.012 120);
+  --input: oklch(0.9 0.012 120);
+  --ring: oklch(0.47 0.055 152);
+
+  /* Tokens temáticos */
+  --earth: oklch(0.52 0.075 55);
+  --earth-foreground: oklch(0.98 0.01 80);
+  --wheat: oklch(0.79 0.125 82);
+  --wheat-foreground: oklch(0.36 0.05 65);
+  --leaf: oklch(0.62 0.13 146);
+
+  /*
+   * Tokens "-ink": texto desta família de cor sobre a SUPERFÍCIE da página.
+   * Não confundir com "-foreground", que é o texto que vai POR CIMA da cor
+   * preenchida. São funções opostas, e trocá-las produz texto invisível:
+   * --wheat-foreground sobre card escuro dá 1,01:1.
+   * Medidos aqui: wheat-ink 11,05:1 · leaf-ink 5,66:1 sobre card branco.
+   */
+  --wheat-ink: oklch(0.36 0.05 65);
+  --leaf-ink: oklch(0.5 0.13 146);
+  --tech: oklch(0.56 0.09 218);
+  --tech-foreground: oklch(0.98 0.01 220);
+
+  --chart-1: oklch(0.47 0.055 152);
+  --chart-2: oklch(0.62 0.13 146);
+  --chart-3: oklch(0.79 0.125 82);
+  --chart-4: oklch(0.52 0.075 55);
+  --chart-5: oklch(0.56 0.09 218);
+
+  /*
+   * Cores de série dos gráficos de clima. Croma mais alto que os tokens
+   * temáticos porque marca fina sobre superfície clara precisa disso.
+   * Validadas em ambos os temas: faixa de luminosidade, piso de croma,
+   * separação para daltonismo e contraste >= 3:1 contra a superfície.
+   */
+  --chart-temp: oklch(0.55 0.13 55);
+  --chart-rain: oklch(0.52 0.12 230);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.98 0.01 95);
+  --sidebar-foreground: oklch(0.24 0.02 150);
+  --sidebar-primary: oklch(0.47 0.055 152);
+  --sidebar-primary-foreground: oklch(0.98 0.01 95);
+  --sidebar-accent: oklch(0.94 0.022 145);
+  --sidebar-accent-foreground: oklch(0.32 0.04 150);
+  --sidebar-border: oklch(0.9 0.012 120);
+  --sidebar-ring: oklch(0.47 0.055 152);
+}
+
+/*
+ * Tema escuro. A lógica do claro é invertida, não copiada:
+ * lá o fundo é creme e o card é branco (mais claro que o fundo);
+ * aqui o fundo é quase-preto esverdeado e o card é mais claro que ele.
+ * Em ambos, a superfície elevada é a mais clara — é isso que a Regra do Creme protege.
+ */
+.dark {
+  color-scheme: dark;
+
+  /* No escuro a sombra precisa ser mais escura que o fundo para existir */
+  --elev-1: 0 2px 8px oklch(0.08 0.01 150 / 0.4);
+  --elev-2: 0 8px 24px oklch(0.08 0.01 150 / 0.5);
+  --elev-3: 0 20px 50px oklch(0.08 0.01 150 / 0.6);
+  --hairline: oklch(0.95 0.01 150 / 0.12);
+
+  --background: oklch(0.18 0.012 150);
+  --foreground: oklch(0.94 0.008 95);
+
+  --card: oklch(0.22 0.014 150);
+  --card-foreground: oklch(0.94 0.008 95);
+
+  --popover: oklch(0.24 0.015 150);
+  --popover-foreground: oklch(0.94 0.008 95);
+
+  /* Verde floresta clareia: no escuro ele precisa liderar, não recuar */
+  --primary: oklch(0.74 0.09 152);
+  --primary-foreground: oklch(0.16 0.02 150);
+
+  --secondary: oklch(0.28 0.025 148);
+  --secondary-foreground: oklch(0.9 0.02 145);
+
+  --muted: oklch(0.25 0.014 145);
+  --muted-foreground: oklch(0.72 0.018 140);
+
+  --accent: oklch(0.79 0.135 75);
+  --accent-foreground: oklch(0.2 0.04 60);
+
+  --destructive: oklch(0.68 0.19 25);
+
+  --border: oklch(0.33 0.016 145);
+  --input: oklch(0.33 0.016 145);
+  --ring: oklch(0.74 0.09 152);
+
+  /* Tokens temáticos — o eixo terra→tecnologia sobrevive ao tema */
+  --earth: oklch(0.7 0.085 55);
+  --earth-foreground: oklch(0.17 0.03 50);
+  --wheat: oklch(0.83 0.12 82);
+  --wheat-foreground: oklch(0.22 0.045 60);
+  --leaf: oklch(0.74 0.14 146);
+
+  /* No escuro os "-ink" clareiam: 10,2:1 e 7,91:1 sobre o card escuro */
+  --wheat-ink: oklch(0.83 0.12 82);
+  --leaf-ink: oklch(0.74 0.14 146);
+  --tech: oklch(0.72 0.1 218);
+  --tech-foreground: oklch(0.16 0.03 220);
+
+  --chart-1: oklch(0.74 0.09 152);
+  --chart-2: oklch(0.74 0.14 146);
+  --chart-3: oklch(0.83 0.12 82);
+  --chart-4: oklch(0.7 0.085 55);
+  --chart-5: oklch(0.72 0.1 218);
+
+  /* Passos próprios do tema escuro — não é o claro clareado no automático */
+  --chart-temp: oklch(0.64 0.14 55);
+  --chart-rain: oklch(0.64 0.13 230);
+
+  --sidebar: oklch(0.22 0.014 150);
+  --sidebar-foreground: oklch(0.94 0.008 95);
+  --sidebar-primary: oklch(0.74 0.09 152);
+  --sidebar-primary-foreground: oklch(0.16 0.02 150);
+  --sidebar-accent: oklch(0.28 0.025 148);
+  --sidebar-accent-foreground: oklch(0.9 0.02 145);
+  --sidebar-border: oklch(0.33 0.016 145);
+  --sidebar-ring: oklch(0.74 0.09 152);
+}
+
+/* Escala de elevação — sombra dá profundidade, anel dá aresta. Os dois juntos. */
+@utility elev-1 {
+  box-shadow:
+    0 0 0 1px var(--hairline),
+    var(--elev-1);
+}
+
+@utility elev-2 {
+  box-shadow:
+    0 0 0 1px var(--hairline),
+    var(--elev-2);
+}
+
+@utility elev-3 {
+  box-shadow:
+    0 0 0 1px var(--hairline),
+    var(--elev-3);
+}
+
+/*
+ * Modo apresentação. Não transforma seções em slides nem trava a rolagem:
+ * apenas amplia o que precisa ser lido a cinco metros e recua o secundário.
+ */
+.presenting {
+  /*
+   * Um único ajuste na raiz amplia tudo de uma vez. Como a rampa tipográfica
+   * e o espaçamento são todos em rem, as proporções documentadas em DESIGN.md
+   * se mantêm exatamente — parágrafo de abertura continua maior que corpo, que
+   * continua maior que nota. Redefinir tamanhos elemento a elemento achataria
+   * a hierarquia justamente onde ela mais importa, que é a leitura à distância.
+   */
+  font-size: 112.5%;
+
+  /* Espaço para a barra de controle fixa no rodapé */
+  scroll-padding-bottom: 7rem;
+}
+
+.presenting body {
+  padding-bottom: 6rem;
+}
+
+/* Rodapés de aviso e créditos saem de cena, sem sumir para leitor de tela */
+.presenting [data-presentation="secondary"] {
+  opacity: 0.55;
+}
+
+/* Trama de pontos sutil usada em blocos de destaque */
+@utility bg-dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: color-mix(in oklab, var(--primary) 14%, transparent);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Medições reais alinham em coluna; number tabular é para dado, não estética */
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /*
+   * Rede de segurança global. Componentes individuais também checam
+   * prefers-reduced-motion, mas isto garante que nada escape.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
