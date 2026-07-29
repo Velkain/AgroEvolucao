@@ -1,4 +1,6 @@
 import { Wrench } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import { challengeGroups, challengesClosing } from '@/lib/challenges-data'
 
 export function ChallengesSection() {
@@ -23,9 +25,9 @@ export function ChallengesSection() {
         </div>
 
         <div className="mx-auto mt-14 max-w-4xl space-y-10">
-          {challengeGroups.map((group) => (
+          {challengeGroups.map((group, index) => (
+            <Reveal key={group.id} delay={stagger(index)}>
             <section
-              key={group.id}
               aria-labelledby={`desafio-${group.id}`}
               className="border-l-2 border-earth/40 pl-5 sm:pl-6"
             >
@@ -58,6 +60,7 @@ export function ChallengesSection() {
                 ))}
               </dl>
             </section>
+            </Reveal>
           ))}
         </div>
 

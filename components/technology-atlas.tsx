@@ -17,6 +17,8 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { EraGuess } from '@/components/activities/era-guess'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import {
   technologies,
   technologyCategories,
@@ -135,8 +137,8 @@ export function TechnologyAtlas() {
 
         {/* Catálogo */}
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((item) => (
-            <li key={item.id}>
+          {visible.map((item, index) => (
+            <Reveal as="li" key={item.id} delay={stagger(index)}>
               <button
                 type="button"
                 onClick={() => setOpen(item)}
@@ -172,7 +174,7 @@ export function TechnologyAtlas() {
                   Saiba mais
                 </span>
               </button>
-            </li>
+            </Reveal>
           ))}
         </ul>
 

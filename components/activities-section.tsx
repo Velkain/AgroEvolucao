@@ -7,6 +7,8 @@ import {
   Sparkles,
   type LucideIcon,
 } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 
 interface ActivityLink {
   href: string
@@ -88,8 +90,8 @@ export function ActivitiesSection() {
         </div>
 
         <ul className="mt-12 grid gap-3 sm:grid-cols-2">
-          {activities.map((activity) => (
-            <li key={activity.href}>
+          {activities.map((activity, index) => (
+            <Reveal as="li" key={activity.href} delay={stagger(index)}>
               <a
                 href={activity.href}
                 className="group flex h-full gap-4 rounded-xl border border-border bg-card p-5 transition-shadow hover:elev-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -115,7 +117,7 @@ export function ActivitiesSection() {
                   </span>
                 </span>
               </a>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

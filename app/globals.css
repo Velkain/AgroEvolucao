@@ -292,6 +292,51 @@
     @apply bg-background text-foreground;
   }
 
+  /*
+   * Elementos que respondem a clique precisam parecer clicáveis. `:where`
+   * mantém a especificidade zerada para componentes poderem trocar o cursor
+   * em estados próprios, como o feedback já respondido do quiz.
+   */
+  :where(
+    a[href],
+    button:not(:disabled),
+    summary,
+    select:not(:disabled),
+    label[for],
+    label:has(input:not(:disabled)),
+    input[type='checkbox']:not(:disabled),
+    input[type='radio']:not(:disabled),
+    input[type='range']:not(:disabled),
+    input[type='file']:not(:disabled),
+    input[type='color']:not(:disabled),
+    [role='button']:not([aria-disabled='true'])
+  ) {
+    cursor: pointer;
+  }
+
+  :where(
+    button:disabled,
+    select:disabled,
+    input:disabled,
+    [role='button'][aria-disabled='true']
+  ) {
+    cursor: not-allowed;
+  }
+
+  /*
+   * Barra de rolagem oculta. O site é projetado numa sala de aula, onde a
+   * barra vira um traço cinza atravessando a tela.
+   * A rolagem em si continua inteira: roda do mouse, teclado, toque e a
+   * navegação do modo apresentação seguem funcionando.
+   */
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Medições reais alinham em coluna; number tabular é para dado, não estética */
   [data-numeric] {
     font-variant-numeric: tabular-nums;

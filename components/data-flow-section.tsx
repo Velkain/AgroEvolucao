@@ -1,4 +1,6 @@
 import { ArrowDown, UserCheck } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import {
   dataFlowSteps,
   dataFlowExample,
@@ -33,8 +35,7 @@ export function DataFlowSection() {
         */}
         <ol className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {dataFlowSteps.map((step, index) => (
-            <li
-              key={step.id}
+            <Reveal as="li" key={step.id} delay={stagger(index)}
               className="relative flex gap-4 rounded-xl border border-border bg-card p-5 elev-1"
             >
               <div className="flex flex-col items-center">
@@ -68,7 +69,7 @@ export function DataFlowSection() {
                   ))}
                 </ul>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
 

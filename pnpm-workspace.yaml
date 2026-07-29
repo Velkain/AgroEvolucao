@@ -13,3 +13,6 @@ allowBuilds:
 # Pin herdado do projeto original (gerado pelo v0).
 overrides:
   hono: 4.12.25
+
+patchedDependencies:
+  next-themes@0.4.6: patches/next-themes@0.4.6.patch

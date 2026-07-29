@@ -25,31 +25,32 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      {/*
+        Mais largo que o max-w-7xl do conteúdo de propósito: são onze links, e
+        num container de 1280px eles somam 1289px — vazavam por fora da barra.
+        A barra fixa não precisa se alinhar à largura do texto.
+      */}
+      <div className="mx-auto flex h-16 max-w-[110rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logotipo */}
         <a
           href="#inicio"
           className="flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <BrandMark className="h-8 w-8 shrink-0" />
-          <span className="flex flex-col leading-none">
-            <span className="whitespace-nowrap font-serif text-lg font-semibold text-primary">
-              {siteConfig.name}
-            </span>
-            {/*
-              O subtítulo só aparece onde a barra completa cabe. Entre sm e xl
-              o menu disputa o mesmo espaço e ele quebrava em três linhas.
-            */}
-            <span className="hidden whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-muted-foreground 2xl:block">
-              {siteConfig.subtitle}
-            </span>
+          {/*
+            Sem subtítulo aqui. Ele disputava largura com os onze links e não
+            acrescenta nada: o título do hero diz a mesma frase logo abaixo, e
+            ele continua no rodapé e na imagem de preview do link.
+          */}
+          <span className="whitespace-nowrap font-serif text-lg font-semibold text-primary">
+            {siteConfig.name}
           </span>
         </a>
 
         {/* Navegação desktop */}
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-0.5 xl:flex"
+          className="hidden items-center xl:flex"
         >
           {navLinks.map((link) => {
             const id = link.href.slice(1)
@@ -60,7 +61,7 @@ export function SiteHeader() {
                 href={link.href}
                 aria-current={isActive ? 'true' : undefined}
                 className={cn(
-                  'whitespace-nowrap rounded-md px-2.5 py-2 text-[0.8125rem] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+                  'whitespace-nowrap rounded-md px-2 py-2 text-[0.8125rem] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
                   isActive
                     ? 'bg-secondary text-primary'
                     : 'text-foreground/80 hover:bg-secondary hover:text-primary',

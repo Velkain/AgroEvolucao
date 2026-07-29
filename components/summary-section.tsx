@@ -1,5 +1,7 @@
 import { Check } from 'lucide-react'
 import { TimelineOrder } from '@/components/activities/timeline-order'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import {
   summaryMilestones,
   summaryStatement,
@@ -56,9 +58,8 @@ export function SummarySection() {
 
         {/* Conclusões */}
         <ul className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
-          {summaryConclusions.map((conclusion) => (
-            <li
-              key={conclusion}
+          {summaryConclusions.map((conclusion, index) => (
+            <Reveal as="li" key={conclusion} delay={stagger(index)}
               className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-5"
             >
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -67,7 +68,7 @@ export function SummarySection() {
               <p className="text-pretty leading-relaxed text-foreground">
                 {conclusion}
               </p>
-            </li>
+            </Reveal>
           ))}
         </ul>
 

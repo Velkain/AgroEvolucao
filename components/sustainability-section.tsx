@@ -1,4 +1,6 @@
 import { Scale } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import {
   sustainabilityPillars,
   sustainabilityNote,
@@ -26,9 +28,9 @@ export function SustainabilitySection() {
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {sustainabilityPillars.map((pillar) => (
+          {sustainabilityPillars.map((pillar, index) => (
+            <Reveal key={pillar.id} delay={stagger(index)}>
             <article
-              key={pillar.id}
               aria-labelledby={`pilar-${pillar.id}`}
               className="rounded-2xl border border-primary/20 bg-background p-6 elev-1 sm:p-8"
             >
@@ -63,6 +65,7 @@ export function SustainabilitySection() {
                 ))}
               </ul>
             </article>
+            </Reveal>
           ))}
         </div>
 

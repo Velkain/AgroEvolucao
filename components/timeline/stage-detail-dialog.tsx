@@ -47,12 +47,12 @@ function DetailAccordionItem({
 }: DetailSection) {
   return (
     <AccordionItem value={id}>
-      <AccordionTrigger className="gap-3 py-3.5">
-        <span className="flex items-center gap-2.5 font-serif text-base font-semibold text-foreground">
+      <AccordionTrigger className="grid grid-cols-[minmax(0,1fr)_2rem_1rem] items-center gap-3 py-3.5">
+        <span className="flex min-w-0 items-center gap-2.5 font-serif text-base font-semibold text-foreground">
           <Icon className={cn('h-5 w-5 shrink-0', accentClass)} aria-hidden="true" />
           {title}
         </span>
-        <span className="ml-auto mr-2 shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+        <span className="flex h-5 w-8 shrink-0 items-center justify-center justify-self-center rounded-full bg-muted text-xs font-medium tabular-nums text-muted-foreground">
           {items.length}
         </span>
       </AccordionTrigger>

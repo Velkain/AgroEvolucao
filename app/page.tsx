@@ -13,6 +13,7 @@ import { ActivitiesSection } from '@/components/activities-section'
 import { QuizSection } from '@/components/quiz-section'
 import { SummarySection } from '@/components/summary-section'
 import { ReferencesSection } from '@/components/references-section'
+import { GroupMembersSection } from '@/components/group-members-section'
 import { SiteFooter } from '@/components/site-footer'
 import { PresentationProvider } from '@/components/presentation/presentation-provider'
 import { PresentationBar } from '@/components/presentation/presentation-bar'
@@ -54,6 +55,7 @@ export default function HomePage() {
           <QuizSection />
           <SummarySection />
           <ReferencesSection />
+          <GroupMembersSection />
         </main>
 
         <SiteFooter />

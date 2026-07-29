@@ -21,11 +21,29 @@ export const siteConfig = {
 
 /** Informações editáveis exibidas no rodapé */
 export const projectInfo = {
-  school: 'Nome da escola',
+  school: 'Colégio Estadual Cleoracy Aparecida Gil',
+  schoolAddress:
+    'R. Francisco Barroso, 280 - Jardim Padre Ivo, Douradina - PR, 87485-000',
   grade: '3ª série',
-  members: 'Adicionar integrantes',
+  members: '12 integrantes',
   teacher: 'Adicionar professor',
 } as const
+
+/** Estudantes responsáveis pelo projeto */
+export const groupMembers = [
+  'Emanuel Viero',
+  'Felipe Gabriel',
+  'Gabriel Pereira',
+  'João Gabriel',
+  'João Pedro Francelino',
+  'José Vinicius',
+  'Kauan Henrique',
+  'Murilo Sarti',
+  'Rafael Akira',
+  'Tiago Borba',
+  'Victor Augusto',
+  'Victor Daniel',
+] as const
 
 export interface SiteSection {
   id: string
@@ -76,8 +94,10 @@ export const siteSections: SiteSection[] = [
     inNav: true,
   },
   {
+    /* Rótulo curto no menu: "Fazenda inteligente" é o link mais largo dos onze
+       e sozinho empurrava a barra para fora. A seção mantém o título completo. */
     id: 'fazenda-inteligente',
-    label: 'Fazenda inteligente',
+    label: 'Fazenda',
     presentationLabel: 'Demonstração de fazenda inteligente',
     inNav: true,
   },
@@ -101,6 +121,12 @@ export const siteSections: SiteSection[] = [
     label: 'Referências',
     presentationLabel: 'Fontes e referências',
     inNav: true,
+  },
+  {
+    id: 'integrantes',
+    label: 'Integrantes',
+    presentationLabel: 'Integrantes do grupo',
+    inNav: false,
   },
 ]
 

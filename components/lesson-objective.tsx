@@ -1,5 +1,7 @@
 import { MessagesSquare, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Reveal } from '@/components/reveal'
+import { stagger } from '@/lib/animation'
 import { objectiveCards } from '@/lib/site-data'
 
 export function LessonObjective() {
@@ -30,9 +32,9 @@ export function LessonObjective() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {objectiveCards.map((card, index) => (
+            <Reveal key={card.title} delay={stagger(index)}>
             <Card
-              key={card.title}
-              className="h-full border-border/70 transition-shadow hover:shadow-md"
+              className="h-full border-border/70 transition-shadow hover:elev-2"
             >
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -53,6 +55,7 @@ export function LessonObjective() {
                 </p>
               </CardContent>
             </Card>
+            </Reveal>
           ))}
         </div>
 
