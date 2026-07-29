@@ -1,5 +1,4 @@
-# Configurações do pnpm 11+.
-# O campo "pnpm" do package.json não é mais lido pelo pnpm — estas chaves moravam lá.
+# Configurações do pnpm. Estas chaves ficavam no campo "pnpm" do package.json.
 
 # Quais pacotes podem rodar script de instalação.
 allowBuilds:
