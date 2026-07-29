@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-07-29T13:47:31.353Z",
+        "reason": "Usuario confirmou: bg-dot-grid e radial-gradient (campo de pontos), nao grade de linhas, e faz parte da identidade incumbente documentada no DESIGN.md"
+      }
+    ]
+  }
+}

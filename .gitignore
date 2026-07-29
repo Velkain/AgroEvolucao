@@ -23,3 +23,5 @@ node_modules
 
 # Claude Code — settings.json é compartilhado, o .local é de cada pessoa
 .claude/settings.local.json
+# Cache incremental do TypeScript — gerado por máquina
+*.tsbuildinfo

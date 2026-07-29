@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-29T17:43:36.209Z",
+  "title": "Design System: AgroEvolução",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Verde Floresta",
+        "canonical": "oklch(0.47 0.055 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.055 152)",
+          "oklch(0.26 0.055 152)",
+          "oklch(0.37 0.055 152)",
+          "oklch(0.47 0.055 152)",
+          "oklch(0.60 0.055 152)",
+          "oklch(0.71 0.055 152)",
+          "oklch(0.83 0.055 152)",
+          "oklch(0.95 0.055 152)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Âmbar de Colheita",
+        "canonical": "oklch(0.72 0.13 72)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 72)",
+          "oklch(0.26 0.13 72)",
+          "oklch(0.37 0.13 72)",
+          "oklch(0.49 0.13 72)",
+          "oklch(0.60 0.13 72)",
+          "oklch(0.72 0.13 72)",
+          "oklch(0.83 0.13 72)",
+          "oklch(0.95 0.13 72)"
+        ]
+      },
+      "earth": {
+        "role": "tertiary",
+        "displayName": "Terra",
+        "canonical": "oklch(0.52 0.075 55)",
+        "tonalRamp": [
+          "oklch(0.15 0.075 55)",
+          "oklch(0.26 0.075 55)",
+          "oklch(0.37 0.075 55)",
+          "oklch(0.52 0.075 55)",
+          "oklch(0.60 0.075 55)",
+          "oklch(0.71 0.075 55)",
+          "oklch(0.83 0.075 55)",
+          "oklch(0.95 0.075 55)"
+        ]
+      },
+      "wheat": {
+        "role": "tertiary",
+        "displayName": "Trigo",
+        "canonical": "oklch(0.79 0.125 82)",
+        "tonalRamp": [
+          "oklch(0.15 0.125 82)",
+          "oklch(0.26 0.125 82)",
+          "oklch(0.37 0.125 82)",
+          "oklch(0.49 0.125 82)",
+          "oklch(0.60 0.125 82)",
+          "oklch(0.71 0.125 82)",
+          "oklch(0.79 0.125 82)",
+          "oklch(0.95 0.125 82)"
+        ]
+      },
+      "leaf": {
+        "role": "tertiary",
+        "displayName": "Folha",
+        "canonical": "oklch(0.62 0.13 146)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 146)",
+          "oklch(0.26 0.13 146)",
+          "oklch(0.37 0.13 146)",
+          "oklch(0.49 0.13 146)",
+          "oklch(0.62 0.13 146)",
+          "oklch(0.71 0.13 146)",
+          "oklch(0.83 0.13 146)",
+          "oklch(0.95 0.13 146)"
+        ]
+      },
+      "tech": {
+        "role": "tertiary",
+        "displayName": "Tecnologia",
+        "canonical": "oklch(0.56 0.09 218)",
+        "tonalRamp": [
+          "oklch(0.15 0.09 218)",
+          "oklch(0.26 0.09 218)",
+          "oklch(0.37 0.09 218)",
+          "oklch(0.56 0.09 218)",
+          "oklch(0.60 0.09 218)",
+          "oklch(0.71 0.09 218)",
+          "oklch(0.83 0.09 218)",
+          "oklch(0.95 0.09 218)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Creme de Papel",
+        "canonical": "oklch(0.99 0.006 95)",
+        "tonalRamp": [
+          "oklch(0.15 0.006 95)",
+          "oklch(0.26 0.006 95)",
+          "oklch(0.37 0.006 95)",
+          "oklch(0.49 0.006 95)",
+          "oklch(0.60 0.006 95)",
+          "oklch(0.71 0.006 95)",
+          "oklch(0.83 0.006 95)",
+          "oklch(0.99 0.006 95)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Verde Tinta",
+        "canonical": "oklch(0.24 0.02 150)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 150)",
+          "oklch(0.24 0.02 150)",
+          "oklch(0.37 0.02 150)",
+          "oklch(0.49 0.02 150)",
+          "oklch(0.60 0.02 150)",
+          "oklch(0.71 0.02 150)",
+          "oklch(0.83 0.02 150)",
+          "oklch(0.95 0.02 150)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Verde Névoa",
+        "canonical": "oklch(0.5 0.02 140)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 140)",
+          "oklch(0.26 0.02 140)",
+          "oklch(0.37 0.02 140)",
+          "oklch(0.50 0.02 140)",
+          "oklch(0.60 0.02 140)",
+          "oklch(0.71 0.02 140)",
+          "oklch(0.83 0.02 140)",
+          "oklch(0.95 0.02 140)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Borda Pálida",
+        "canonical": "oklch(0.9 0.012 120)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 120)",
+          "oklch(0.26 0.012 120)",
+          "oklch(0.37 0.012 120)",
+          "oklch(0.49 0.012 120)",
+          "oklch(0.60 0.012 120)",
+          "oklch(0.71 0.012 120)",
+          "oklch(0.90 0.012 120)",
+          "oklch(0.95 0.012 120)"
+        ]
+      },
+      "wheat-ink": {
+        "role": "tertiary",
+        "displayName": "Tinta de Trigo",
+        "canonical": "oklch(0.36 0.05 65)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 65)",
+          "oklch(0.26 0.05 65)",
+          "oklch(0.36 0.05 65)",
+          "oklch(0.49 0.05 65)",
+          "oklch(0.60 0.05 65)",
+          "oklch(0.71 0.05 65)",
+          "oklch(0.83 0.05 65)",
+          "oklch(0.95 0.05 65)"
+        ]
+      },
+      "leaf-ink": {
+        "role": "tertiary",
+        "displayName": "Tinta de Folha",
+        "canonical": "oklch(0.5 0.13 146)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 146)",
+          "oklch(0.26 0.13 146)",
+          "oklch(0.37 0.13 146)",
+          "oklch(0.50 0.13 146)",
+          "oklch(0.60 0.13 146)",
+          "oklch(0.71 0.13 146)",
+          "oklch(0.83 0.13 146)",
+          "oklch(0.95 0.13 146)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Exclusivo do título do hero. Um por página, em Fraunces com entreletra negativa."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção, sempre em verde floresta. É o nível que marca uma nova parada do percurso."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de card e de etapa da linha do tempo, em verde tinta — nunca em verde floresta."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido padrão em Inter."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Parágrafo de abertura de seção: 18px, centrado, verde névoa, largura máxima de 48rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Marcadores de coluna em caixa alta com entreletra aberta. Rotula, nunca informa sozinho."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Passo exclusivo dos links do cabeçalho (0.8125rem). Existe porque são onze seções que precisam caber numa linha a partir de 1280px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "elev-1-card",
+        "value": "0 2px 8px oklch(0.24 0.02 150 / 0.10)",
+        "purpose": "Nível 1. Estado de repouso de qualquer superfície branca sobre o creme."
+      },
+      {
+        "name": "elev-2-raised",
+        "value": "0 8px 24px oklch(0.24 0.02 150 / 0.14)",
+        "purpose": "Nível 2. Hover de card, etapa ativa da linha do tempo, blocos que pedem atenção."
+      },
+      {
+        "name": "elev-3-modal",
+        "value": "0 20px 50px oklch(0.24 0.02 150 / 0.20)",
+        "purpose": "Nível 3. Diálogos de detalhe e menu lateral. Único nível que se descola da página."
+      },
+      {
+        "name": "hairline-ring",
+        "value": "0 0 0 1px oklch(0.24 0.02 150 / 0.10)",
+        "purpose": "Anel permanente que acompanha todos os níveis. Sombra dá profundidade, anel dá aresta."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-state",
+        "value": "150ms",
+        "purpose": "Duração padrão de toda transição de estado (hover, foco, cor)."
+      },
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Easing padrão para transições de estado."
+      },
+      {
+        "name": "press-offset",
+        "value": "translateY(1px)",
+        "purpose": "Deslocamento tátil ao pressionar um botão."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal. Verde floresta com texto creme; desce 1px ao pressionar.",
+      "html": "<button class=\"ds-btn-primary\">Iniciar apresentação</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem; height: 2.25rem; padding: 0 0.625rem; border: 1px solid transparent; border-radius: 0.625rem; background: var(--primary, oklch(0.47 0.055 152)); color: var(--primary-foreground, oklch(0.98 0.01 95)); font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; white-space: nowrap; cursor: pointer; transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: color-mix(in oklab, var(--primary, oklch(0.47 0.055 152)) 80%, transparent); } .ds-btn-primary:focus-visible { outline: none; border-color: var(--ring, oklch(0.47 0.055 152)); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring, oklch(0.47 0.055 152)) 50%, transparent); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ação secundária. Fundo creme com borda pálida.",
+      "html": "<button class=\"ds-btn-outline\">Explorar evolução</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem; height: 2.25rem; padding: 0 0.625rem; border: 1px solid var(--border, oklch(0.9 0.012 120)); border-radius: 0.625rem; background: var(--background, oklch(0.99 0.006 95)); color: var(--foreground, oklch(0.24 0.02 150)); font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; white-space: nowrap; cursor: pointer; transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-outline:hover { background: var(--muted, oklch(0.96 0.01 120)); } .ds-btn-outline:focus-visible { outline: none; border-color: var(--ring, oklch(0.47 0.055 152)); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring, oklch(0.47 0.055 152)) 50%, transparent); } .ds-btn-outline:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Chemistry Badge",
+      "kind": "chip",
+      "refersTo": "badge-chemistry",
+      "description": "A Regra do Âmbar em forma de componente: sinaliza conteúdo químico e nada mais.",
+      "html": "<span class=\"ds-badge-chemistry\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 2v7.31\"/><path d=\"M14 9.3V1.99\"/><path d=\"M8.5 2h7\"/><path d=\"M14 9.3a6.5 6.5 0 1 1-4 0\"/><path d=\"M5.58 16.5h12.85\"/></svg>Participação da química</span>",
+      "css": ".ds-badge-chemistry { display: inline-flex; align-items: center; justify-content: center; gap: 0.25rem; height: 1.25rem; width: fit-content; padding: 0.125rem 0.5rem; border: 1px solid transparent; border-radius: 1.625rem; background: var(--accent, oklch(0.72 0.13 72)); color: var(--accent-foreground, oklch(0.28 0.04 65)); font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; white-space: nowrap; } .ds-badge-chemistry svg { width: 0.75rem; height: 0.75rem; flex-shrink: 0; }"
+    },
+    {
+      "name": "Secondary Badge",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Etiqueta de tema padrão. Verde-suave com texto verde-escuro.",
+      "html": "<span class=\"ds-badge-secondary\">Sustentabilidade</span>",
+      "css": ".ds-badge-secondary { display: inline-flex; align-items: center; justify-content: center; height: 1.25rem; width: fit-content; padding: 0.125rem 0.5rem; border: 1px solid transparent; border-radius: 1.625rem; background: var(--secondary, oklch(0.94 0.022 145)); color: var(--secondary-foreground, oklch(0.32 0.04 150)); font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; white-space: nowrap; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Superfície branca sobre o creme. Nível 1 em repouso, Nível 2 no hover, anel permanente nos dois.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Química no campo</h3><p class=\"ds-card-body\">Fertilizantes, correção de solo e defensivos entram como conteúdo, não como enfeite.</p></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.25rem; max-width: 20rem; padding: 1.25rem; border-radius: 0.875rem; background: var(--card, oklch(1 0 0)); color: var(--foreground, oklch(0.24 0.02 150)); box-shadow: 0 0 0 1px oklch(0.24 0.02 150 / 0.10), 0 2px 8px oklch(0.24 0.02 150 / 0.10); transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { box-shadow: 0 0 0 1px oklch(0.24 0.02 150 / 0.10), 0 8px 24px oklch(0.24 0.02 150 / 0.14); } .ds-card-title { margin: 0; font-family: Fraunces, Georgia, serif; font-size: 1.125rem; font-weight: 600; line-height: 1.375; color: var(--foreground, oklch(0.24 0.02 150)); } .ds-card-body { margin: 0.375rem 0 0; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.625; color: var(--muted-foreground, oklch(0.5 0.02 140)); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Link do cabeçalho fixo. Compacto porque são onze seções; a barra completa só aparece a partir de 1280px.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#evolucao\">Evolução</a><a class=\"ds-nav-link\" href=\"#quimica\">Química</a><a class=\"ds-nav-link\" href=\"#quiz\">Quiz</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 0.125rem; } .ds-nav-link { padding: 0.5rem 0.625rem; border-radius: 0.5rem; font-family: Inter, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 500; text-decoration: none; color: color-mix(in oklab, var(--foreground, oklch(0.24 0.02 150)) 80%, transparent); transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav-link:hover { background: var(--secondary, oklch(0.94 0.022 145)); color: var(--primary, oklch(0.47 0.055 152)); } .ds-nav-link:focus-visible { outline: 2px solid var(--ring, oklch(0.47 0.055 152)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Timeline Stage Marker",
+      "kind": "custom",
+      "refersTo": "stage-marker-earth",
+      "description": "Componente-assinatura. O anel de 4px na cor do fundo faz o marcador perfurar a linha da timeline em vez de flutuar sobre ela.",
+      "html": "<div class=\"ds-timeline\"><span class=\"ds-marker ds-marker-earth\">1.0</span><span class=\"ds-marker ds-marker-wheat\">2.0</span><span class=\"ds-marker ds-marker-green\">3.0</span></div>",
+      "css": ".ds-timeline { position: relative; display: flex; align-items: center; justify-content: space-between; width: 20rem; padding: 0 1rem; } .ds-timeline::before { content: \"\"; position: absolute; left: 2rem; right: 2rem; top: 50%; height: 2px; background: var(--border, oklch(0.9 0.012 120)); } .ds-marker { position: relative; display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; flex-shrink: 0; border-radius: 9999px; box-shadow: 0 0 0 4px var(--background, oklch(0.99 0.006 95)); font-family: Fraunces, Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-marker-earth { background: var(--earth, oklch(0.52 0.075 55)); color: var(--earth-foreground, oklch(0.98 0.01 80)); } .ds-marker-wheat { background: var(--wheat, oklch(0.79 0.125 82)); color: var(--wheat-foreground, oklch(0.36 0.05 65)); } .ds-marker-green { background: var(--primary, oklch(0.47 0.055 152)); color: var(--primary-foreground, oklch(0.98 0.01 95)); }"
+    },
+    {
+      "name": "Era Chip",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Etiqueta de era: cor temática a 10-15% de fundo com o texto na cor cheia, sempre com o ícone da etapa.",
+      "html": "<div class=\"ds-era-row\"><span class=\"ds-era ds-era-earth\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 20h10\"/><path d=\"M10 20c5.5-2.5.8-6.4 3-10\"/><path d=\"M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z\"/><path d=\"M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z\"/></svg>Agricultura 1.0</span><span class=\"ds-era ds-era-tech\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/><rect x=\"9\" y=\"9\" width=\"6\" height=\"6\"/><path d=\"M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2\"/></svg>Agricultura 5.0</span></div>",
+      "css": ".ds-era-row { display: flex; flex-wrap: wrap; gap: 0.5rem; } .ds-era { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; white-space: nowrap; } .ds-era svg { width: 0.875rem; height: 0.875rem; flex-shrink: 0; } .ds-era-earth { background: color-mix(in oklab, var(--earth, oklch(0.52 0.075 55)) 10%, transparent); color: var(--earth, oklch(0.52 0.075 55)); } .ds-era-tech { background: color-mix(in oklab, var(--tech, oklch(0.56 0.09 218)) 12%, transparent); color: var(--tech, oklch(0.56 0.09 218)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Eixo Terra→Silício",
+    "overview": "O sistema tem uma única ideia estruturante, e ela é espacial: a agricultura evoluiu da terra para o silício, e a página inteira é organizada nesse eixo. O hero divide literalmente o fundo em dois — terroso e quente à esquerda, tecnológico e frio à direita — e coloca uma seta âmbar no meio. A comparação Passado × Presente repete o mesmo par de temperaturas. A linha do tempo caminha do marcador terroso (Agricultura 1.0) ao verde (Revolução Verde). A temperatura da cor conta a história antes de qualquer texto ser lido.\n\nO verde floresta é a constante que atravessa o eixo: é a cor da marca, dos títulos e do rodapé, e não pertence nem ao passado nem ao futuro. Ele representa a agricultura em si, que permanece enquanto a técnica muda.\n\nO caráter é científico e preciso: rigor visível, estrutura declarada, rótulos em caixa alta com entreletra aberta, contraste alto o bastante para sobreviver a um projetor de sala. A Fraunces serifada carrega a autoridade acadêmica nos títulos; a Inter desaparece e deixa ler. Nada aqui é decorativo — cada cor temática tem um significado atribuído, e usar uma delas fora do seu significado quebra o sistema.",
+    "keyCharacteristics": [
+      "Eixo horizontal terra→tecnologia expresso por temperatura de cor, não por texto",
+      "Verde floresta como constante neutra que atravessa as eras",
+      "Âmbar reservado exclusivamente à química",
+      "Fundo creme, nunca branco puro; superfícies brancas só em cards",
+      "Rótulos em caixa alta com entreletra aberta como marca de rigor",
+      "Legibilidade a cinco metros como restrição de projeto, não como acessibilidade opcional"
+    ],
+    "rules": [
+      {
+        "name": "A Regra das Duas Tintas",
+        "body": "Cada familia de cor tem dois papeis distintos e troca-los produz texto invisivel. --x-foreground e o texto que vai por cima de x preenchido. --x-ink e o texto dessa familia sobre a superficie da pagina. Nao sao intercambiaveis: --wheat-foreground sobre o card escuro rende 1,01:1.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Âmbar",
+        "body": "Âmbar é a cor da química e de mais nada. Onde houver conteúdo químico — elementos, reações, fertilizantes, defensivos, análise de solo, pH — o âmbar aparece. Onde não houver, ele não entra, por mais que caiba esteticamente. Sendo este um trabalho de Química, a cor é o índice visual da disciplina: um leitor deve conseguir varrer a página e achar toda a química só pela cor.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Eixo",
+        "body": "Terra e tecnologia nunca se misturam num mesmo elemento. Quente é passado, frio é futuro; um card, uma coluna ou um marcador escolhe um lado. A única coisa autorizada a atravessar o eixo é o verde floresta e a seta âmbar de transição.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Creme",
+        "body": "O fundo é creme, não branco. Branco puro é exclusividade de cards e popovers, e é justamente o contraste creme × branco que define uma superfície elevada. Pintar o fundo de branco apaga o sistema de elevação inteiro.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra dos Cinco Metros",
+        "body": "Este site é projetado numa sala de aula e lido num celular. Nenhum texto que carregue informação essencial fica abaixo de 0.875rem, e nenhuma informação existe apenas em texto de 0.75rem. Rótulos pequenos rotulam; eles nunca informam sozinhos.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra das Duas Vozes",
+        "body": "Serifada pensa, sem-serifa explica. Fraunces só em títulos e números de etapa; Inter em absolutamente todo o resto. Não há terceira fonte, e nenhuma das duas invade o território da outra.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Verde de Seção",
+        "body": "Verde floresta em título é sinal de nível de seção. Um título de card em verde floresta compete com a seção que o contém e achata a hierarquia — títulos de card são verde tinta.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra da Sombra Verde",
+        "body": "Nenhuma sombra usa preto ou cinza neutro. Toda sombra é oklch(0.24 0.02 150) com opacidade variável — a mesma cor do texto. A página não tem um único pixel de cinza puro, e isso é deliberado.",
+        "section": "elevation"
+      },
+      {
+        "name": "A Regra do Anel Permanente",
+        "body": "O anel de 1px a 10% acompanha todos os níveis e não é substituído pela sombra. Sombra dá profundidade; anel dá aresta. Sobre fundo creme os dois são necessários.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar --x-ink para texto sobre a superficie e --x-foreground apenas sobre a cor cheia.",
+      "Do reservar o âmbar para conteúdo químico, e usar o âmbar em todo conteúdo químico.",
+      "Do manter o fundo em creme (oklch(0.99 0.006 95)) e reservar o branco puro a cards e popovers.",
+      "Do tingir toda sombra com oklch(0.24 0.02 150), a cor do texto, em vez de preto.",
+      "Do adicionar scroll-mt-20 a qualquer seção nova que tenha id, porque o cabeçalho fixo tem 4rem.",
+      "Do declarar uma era nova como chave em stage-theme.ts e consumir o mapa, seguindo o padrão que introduction-section.tsx também usa.",
+      "Do usar render={<a href=\"...\" />} quando um botão precisa navegar; asChild não existe em base-ui.",
+      "Do manter rótulos em caixa alta com entreletra de 0.05em como marca de rigor."
+    ],
+    "donts": [
+      "Don't usar gradiente roxo-azul, glassmorphism, texto com gradiente ou qualquer vocabulário de dashboard de startup — confirmado como anti-referência.",
+      "Don't usar foto de banco de imagens de produtor sorrindo, verde saturado ou linguagem publicitária — o site é didático, não promocional.",
+      "Don't colorir tudo ao mesmo tempo nem colocar ícone em cada frase; número gigante sem fonte é proibido pela regra de não inventar estatística.",
+      "Don't misturar cor terrosa e cor de tecnologia num mesmo elemento; cada bloco escolhe um lado do eixo.",
+      "Don't aplicar verde floresta em título de card — ele é reservado ao nível de seção.",
+      "Don't introduzir uma terceira família tipográfica.",
+      "Don't escrever classes de cor de era direto no componente em vez de consumir stageThemeMap.",
+      "Don't deixar informação essencial abaixo de 0.875rem; o site é lido a cinco metros de distância num projetor."
+    ]
+  }
+}
