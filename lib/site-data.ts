@@ -26,7 +26,7 @@ export const projectInfo = {
     'R. Francisco Barroso, 280 - Jardim Padre Ivo, Douradina - PR, 87485-000',
   grade: '3ª série',
   members: '12 integrantes',
-  teacher: 'Adicionar professor',
+  teacher: 'Daniele Gomes da Silva Lima',
 } as const
 
 /** Estudantes responsáveis pelo projeto */

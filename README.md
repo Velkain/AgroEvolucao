@@ -170,7 +170,6 @@ seção **Integrantes do grupo** do site.
 
 ## Pendências editoriais
 
-- incluir o nome do professor responsável em `lib/site-data.ts`;
 - registrar em `lib/references-data.ts` os materiais efetivamente consultados
   pelo grupo;
 - substituir as ilustrações vetoriais das etapas 4.0 e 5.0 caso o grupo produza

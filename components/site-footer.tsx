@@ -6,7 +6,7 @@ const details = [
   { icon: School, label: 'Escola', value: projectInfo.school },
   { icon: Users, label: 'Turma', value: projectInfo.grade },
   { icon: Users, label: 'Integrantes', value: projectInfo.members },
-  { icon: GraduationCap, label: 'Professor', value: projectInfo.teacher },
+  { icon: GraduationCap, label: 'Professora', value: projectInfo.teacher },
 ]
 
 export function SiteFooter() {
