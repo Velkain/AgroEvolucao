@@ -1,0 +1,69 @@
+{
+  "location": {
+    "name": "Sorriso",
+    "state": "MT",
+    "latitude": -12.5453,
+    "longitude": -55.7113
+  },
+  "fetchedAt": "2026-07-29T03:22:10.906Z",
+  "current": {
+    "time": "2026-07-28T23:15",
+    "temperature": 25.9,
+    "humidity": 61,
+    "precipitation": 0,
+    "soilTemperature": 24.8,
+    "soilMoistureSurface": 0.124,
+    "soilMoistureRoot": 0.255
+  },
+  "daily": [
+    {
+      "date": "2026-07-28",
+      "tempMin": 21.2,
+      "tempMax": 35.2,
+      "precipitation": 0,
+      "precipitationChance": 10
+    },
+    {
+      "date": "2026-07-29",
+      "tempMin": 22.6,
+      "tempMax": 34.4,
+      "precipitation": 0.1,
+      "precipitationChance": 33
+    },
+    {
+      "date": "2026-07-30",
+      "tempMin": 22.9,
+      "tempMax": 35.4,
+      "precipitation": 0,
+      "precipitationChance": 39
+    },
+    {
+      "date": "2026-07-31",
+      "tempMin": 21.9,
+      "tempMax": 36.2,
+      "precipitation": 0,
+      "precipitationChance": 0
+    },
+    {
+      "date": "2026-08-01",
+      "tempMin": 22.4,
+      "tempMax": 35.7,
+      "precipitation": 0,
+      "precipitationChance": 2
+    },
+    {
+      "date": "2026-08-02",
+      "tempMin": 23.1,
+      "tempMax": 34.6,
+      "precipitation": 0.3,
+      "precipitationChance": 18
+    },
+    {
+      "date": "2026-08-03",
+      "tempMin": 23.2,
+      "tempMax": 35.5,
+      "precipitation": 0,
+      "precipitationChance": 1
+    }
+  ]
+}
