@@ -17,50 +17,53 @@ import { GroupMembersSection } from '@/components/group-members-section'
 import { SiteFooter } from '@/components/site-footer'
 import { PresentationProvider } from '@/components/presentation/presentation-provider'
 import { PresentationBar } from '@/components/presentation/presentation-bar'
+import { SplashGate } from '@/components/splash-gate'
 
 export default function HomePage() {
   return (
-    <PresentationProvider>
-      <div className="min-h-screen bg-background">
-        <a
-          href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-        >
-          Pular para o conteúdo
-        </a>
+    <SplashGate>
+      <PresentationProvider>
+        <div className="min-h-screen bg-background">
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            Pular para o conteúdo
+          </a>
 
-        <SiteHeader />
+          <SiteHeader />
 
-        <main id="conteudo" className="pt-16">
-          {/* Abertura: o que é, para que serve, de onde partimos */}
-          <HeroSection />
-          <LessonObjective />
-          <IntroductionSection />
+          <main id="conteudo" className="pt-16">
+            {/* Abertura: o que é, para que serve, de onde partimos */}
+            <HeroSection />
+            <LessonObjective />
+            <IntroductionSection />
 
-          {/* O percurso histórico */}
-          <EvolutionTimeline />
+            {/* O percurso histórico */}
+            <EvolutionTimeline />
 
-          {/* Como a agricultura moderna decide */}
-          <DataFlowSection />
-          <ChemistrySection />
-          <TechnologyAtlas />
-          <SmartFarmSection />
+            {/* Como a agricultura moderna decide */}
+            <DataFlowSection />
+            <ChemistrySection />
+            <TechnologyAtlas />
+            <SmartFarmSection />
 
-          {/* O que isso implica */}
-          <SustainabilitySection />
-          <ChallengesSection />
+            {/* O que isso implica */}
+            <SustainabilitySection />
+            <ChallengesSection />
 
-          {/* Fechamento */}
-          <ActivitiesSection />
-          <QuizSection />
-          <SummarySection />
-          <ReferencesSection />
-          <GroupMembersSection />
-        </main>
+            {/* Fechamento */}
+            <ActivitiesSection />
+            <QuizSection />
+            <SummarySection />
+            <ReferencesSection />
+            <GroupMembersSection />
+          </main>
 
-        <SiteFooter />
-        <PresentationBar />
-      </div>
-    </PresentationProvider>
+          <SiteFooter />
+          <PresentationBar />
+        </div>
+      </PresentationProvider>
+    </SplashGate>
   )
 }

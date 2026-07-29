@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Fraunces } from 'next/font/google'
+import Script from 'next/script'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
@@ -29,6 +30,14 @@ const siteUrl =
 const siteTitle = 'AgroEvolução — Do arado à inteligência artificial'
 const siteDescription =
   'Uma viagem interativa pela evolução da agricultura: dos primeiros cultivos à Agricultura 5.0, mostrando como a tecnologia e a química transformaram a produção agrícola. Projeto educacional.'
+
+const splashSessionScript = `
+try {
+  if (window.sessionStorage.getItem('agroevolucao:splash:v1') === 'seen') {
+    document.documentElement.dataset.splashSeen = 'true'
+  }
+} catch {}
+`
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -103,6 +112,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
+        <Script id="splash-session" strategy="beforeInteractive">
+          {splashSessionScript}
+        </Script>
         <ThemeProvider>
           {children}
           {process.env.NODE_ENV === 'production' && <Analytics />}

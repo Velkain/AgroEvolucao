@@ -284,6 +284,57 @@
   color: color-mix(in oklab, var(--primary) 14%, transparent);
 }
 
+/* Abertura do site: duas folhas de porteira, madeira quente à esquerda e
+   transição para o verde tecnológico à direita. */
+@theme inline {
+  --color-splash-wood-dark: color-mix(
+    in oklab,
+    var(--earth) 72%,
+    var(--foreground)
+  );
+  --color-splash-metal: color-mix(
+    in oklab,
+    var(--muted-foreground) 70%,
+    var(--foreground)
+  );
+}
+
+.splash-gate-leaf {
+  background-image:
+    linear-gradient(90deg, transparent 0 96%, var(--hairline) 96%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2.75rem,
+      oklch(0 0 0 / 0.07) 2.75rem 2.85rem
+    );
+  box-shadow: inset 0 0 4rem oklch(0 0 0 / 0.24);
+}
+
+.splash-gate-leaf-left {
+  background-color: color-mix(in oklab, var(--earth) 86%, var(--wheat));
+}
+
+.splash-gate-leaf-right {
+  background-color: color-mix(in oklab, var(--primary) 74%, var(--earth));
+}
+
+.splash-gate-beam {
+  border: 1px solid oklch(0 0 0 / 0.22);
+  border-radius: 0.3rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--earth) 76%, white),
+    color-mix(in oklab, var(--earth) 74%, var(--foreground))
+  );
+  box-shadow:
+    0 0.25rem 0.6rem oklch(0 0 0 / 0.22),
+    inset 0 1px oklch(1 0 0 / 0.2);
+}
+
+html[data-splash-seen='true'] [data-splash-screen] {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -348,6 +399,10 @@
    * prefers-reduced-motion, mas isto garante que nada escape.
    */
   @media (prefers-reduced-motion: reduce) {
+    [data-splash-screen] {
+      display: none;
+    }
+
     *,
     *::before,
     *::after {
