@@ -1,0 +1,15 @@
+# Configurações do pnpm 11+.
+# O campo "pnpm" do package.json não é mais lido pelo pnpm — estas chaves moravam lá.
+
+# Quais pacotes podem rodar script de instalação.
+allowBuilds:
+  # Ferramenta de mock de rede, puxada por transitividade. Não usamos.
+  msw: false
+  # Baixa o binário nativo que o Next usa para otimizar/redimensionar imagens.
+  sharp: true
+  # Resolvedor nativo usado pelo eslint-config-next.
+  unrs-resolver: true
+
+# Pin herdado do projeto original (gerado pelo v0).
+overrides:
+  hono: 4.12.25

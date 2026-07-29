@@ -1,0 +1,25 @@
+# v0 sandbox internal files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+.snowflake/
+.v0-trash/
+.vercel/
+
+# Variáveis de ambiente — nenhuma chave entra no repositório
+.env
+.env.*
+!.env.example
+
+# Common ignores
+node_modules
+.next/
+.DS_Store
+
+# Impeccable — o que é por máquina fica de fora; a config compartilhada é versionada
+.impeccable/live/sessions/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+
+# Claude Code — settings.json é compartilhado, o .local é de cada pessoa
+.claude/settings.local.json
