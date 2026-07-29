@@ -1,0 +1,76 @@
+import { Scale } from 'lucide-react'
+import {
+  sustainabilityPillars,
+  sustainabilityNote,
+} from '@/lib/sustainability-data'
+
+export function SustainabilitySection() {
+  return (
+    <section
+      id="sustentabilidade"
+      aria-labelledby="sustentabilidade-title"
+      className="scroll-mt-20 border-t border-border/60 bg-secondary/25 py-20 sm:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2
+            id="sustentabilidade-title"
+            className="text-balance font-serif text-3xl font-semibold text-primary sm:text-4xl"
+          >
+            Tecnologia não significa apenas produzir mais
+          </h2>
+          <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
+            Sustentabilidade no campo se sustenta em quatro apoios ao mesmo
+            tempo. Se um deles cede, os outros três não se seguram sozinhos.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
+          {sustainabilityPillars.map((pillar) => (
+            <article
+              key={pillar.id}
+              aria-labelledby={`pilar-${pillar.id}`}
+              className="rounded-2xl border border-primary/20 bg-background p-6 elev-1 sm:p-8"
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <pillar.icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <h3
+                  id={`pilar-${pillar.id}`}
+                  className="font-serif text-xl font-semibold text-foreground"
+                >
+                  {pillar.title}
+                </h3>
+              </div>
+
+              <p className="mt-4 text-pretty leading-relaxed text-foreground/85">
+                {pillar.summary}
+              </p>
+
+              <ul className="mt-5 space-y-2 border-t border-border pt-5">
+                {pillar.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-leaf"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-xl border border-border bg-background/70 p-4 text-sm leading-relaxed text-muted-foreground sm:p-5">
+          <Scale className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+          {sustainabilityNote}
+        </p>
+      </div>
+    </section>
+  )
+}
