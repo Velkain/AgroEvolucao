@@ -6,10 +6,9 @@ import { siteSections } from '@/lib/site-data'
 /**
  * Devolve o id da seção atualmente em leitura.
  *
- * Usa IntersectionObserver com uma faixa estreita logo abaixo do cabeçalho
- * fixo: a seção "ativa" é a que cruza essa linha, e não a que ocupa mais tela.
- * Isso evita que uma seção muito alta continue marcada como ativa depois que a
- * seguinte já começou.
+ * A linha de leitura fica um pixel abaixo do `scroll-mt-20` usado pelas
+ * seções. Assim, quando um link de âncora posiciona seu destino a 80px do topo,
+ * essa seção — e não a anterior — passa a ser a ativa.
  */
 export function useActiveSection(): string | null {
   const [active, setActive] = useState<string | null>(null)
@@ -21,33 +20,45 @@ export function useActiveSection(): string | null {
 
     if (elements.length === 0) return
 
-    const visible = new Map<string, number>()
+    let animationFrame: number | null = null
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            visible.set(entry.target.id, entry.intersectionRatio)
-          } else {
-            visible.delete(entry.target.id)
-          }
+    const updateActive = () => {
+      animationFrame = null
+      const readingLine = Math.min(81, window.innerHeight - 1)
+      let current = elements[0]
+
+      for (const element of elements) {
+        if (element.getBoundingClientRect().top <= readingLine) {
+          current = element
+        } else {
+          break
         }
+      }
 
-        // Entre as que cruzam a linha, vence a primeira na ordem do documento.
-        const firstVisible = siteSections.find((section) =>
-          visible.has(section.id),
-        )
-        if (firstVisible) setActive(firstVisible.id)
-      },
-      {
-        // Faixa de ~20% da altura, logo abaixo do cabeçalho de 4rem.
-        rootMargin: '-72px 0px -75% 0px',
-        threshold: 0,
-      },
-    )
+      setActive((previous) =>
+        previous === current.id ? previous : current.id,
+      )
+    }
 
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+    const scheduleUpdate = () => {
+      if (animationFrame === null) {
+        animationFrame = window.requestAnimationFrame(updateActive)
+      }
+    }
+
+    updateActive()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    window.addEventListener('hashchange', scheduleUpdate)
+
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      window.removeEventListener('hashchange', scheduleUpdate)
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame)
+      }
+    }
   }, [])
 
   return active
