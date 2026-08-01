@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./public/icon.svg" alt="Símbolo do AgroEvolução" width="96" />
-</p>
-
 <h1 align="center">AgroEvolução</h1>
 
 <p align="center">
