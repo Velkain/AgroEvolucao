@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, useRef, useState } from 'react'
-import { FlaskConical, Lightbulb, Sprout, TestTube } from 'lucide-react'
+import { ExternalLink, FlaskConical, Lightbulb, Sprout, TestTube } from 'lucide-react'
 import { chemistryTopics, chemistryIntro } from '@/lib/chemistry-data'
 import { cn } from '@/lib/utils'
 
@@ -164,6 +164,18 @@ export function ChemistrySection() {
                 {topic.didYouKnow}
               </p>
             </div>
+
+            {topic.source ? (
+              <a
+                href={topic.source.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                {topic.source.name}
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            ) : null}
           </div>
         </div>
 

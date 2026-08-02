@@ -7,11 +7,13 @@ export interface QuizQuestion {
   /** Índice da alternativa correta (0 = A) */
   answer: number
   explanation: string
+  difficulty: 'fundamentos' | 'aplicacao' | 'desafio'
 }
 
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 'q-tecnologias-monitoramento',
+    difficulty: 'aplicacao',
     topic: 'Agricultura de precisão',
     statement:
       'Uma propriedade utiliza uma estação meteorológica, um sistema de monitoramento, dados históricos e recomendações digitais. A implementação dessas tecnologias contribui diretamente para:',
@@ -28,6 +30,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-neolitico',
+    difficulty: 'fundamentos',
     topic: 'Agricultura 1.0',
     statement:
       'A Revolução Neolítica é considerada um marco porque nela ocorreu a transição da caça e da coleta para o cultivo. A consequência social mais direta dessa mudança foi:',
@@ -44,6 +47,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-mecanizacao',
+    difficulty: 'fundamentos',
     topic: 'Agricultura 2.0',
     statement:
       'A mecanização do campo, a partir da Revolução Industrial, ampliou a escala da produção. Entre os desafios que ela trouxe, está:',
@@ -60,6 +64,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-revolucao-verde',
+    difficulty: 'aplicacao',
     topic: 'Agricultura 3.0',
     statement:
       'A Revolução Verde combinou melhoramento de sementes, fertilizantes, defensivos e irrigação. Um efeito negativo associado ao uso excessivo desses insumos é:',
@@ -76,6 +81,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-ph',
+    difficulty: 'fundamentos',
     topic: 'Química do solo',
     statement:
       'Um solo apresenta pH 4,8. Sobre essa condição, é correto afirmar que:',
@@ -92,6 +98,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-npk',
+    difficulty: 'aplicacao',
     topic: 'Química do solo',
     statement:
       'Os macronutrientes NPK participam de processos distintos nas plantas. A associação correta é:',
@@ -108,6 +115,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-sensores',
+    difficulty: 'desafio',
     topic: 'Sensores',
     statement:
       'Um sensor de umidade instalado em um ponto do talhão indica solo seco, mas a lavoura ao redor aparenta boas condições. A interpretação mais adequada é:',
@@ -124,6 +132,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-precisao',
+    difficulty: 'aplicacao',
     topic: 'Agricultura 4.0',
     statement:
       'A aplicação em taxa variável representa uma mudança de lógica em relação ao manejo tradicional porque:',
@@ -140,6 +149,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-ia',
+    difficulty: 'desafio',
     topic: 'Inteligência artificial',
     statement:
       'Um modelo de inteligência artificial treinado para reconhecer sintomas em folhas classifica uma imagem como possível doença. A conduta adequada é:',
@@ -156,6 +166,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-desafios',
+    difficulty: 'desafio',
     topic: 'Desafios da agricultura digital',
     statement:
       'Entre os obstáculos à adoção de tecnologias digitais no campo brasileiro, um dos mais citados é a falta de conectividade rural. Esse problema afeta diretamente a etapa de:',
@@ -172,6 +183,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-sustentabilidade',
+    difficulty: 'fundamentos',
     topic: 'Sustentabilidade',
     statement:
       'Ao afirmar que a Agricultura 5.0 busca "produzir melhor" e não apenas "produzir mais", entende-se que a prioridade passa a incluir:',
@@ -188,6 +200,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 'q-materia-organica',
+    difficulty: 'desafio',
     topic: 'Química do solo',
     statement:
       'A manutenção da palhada sobre o solo, prática comum no plantio direto, contribui para a qualidade do solo porque:',

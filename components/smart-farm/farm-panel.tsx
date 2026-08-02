@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import {
   Antenna,
+  BookmarkPlus,
   CircleAlert,
   Droplets,
   Gauge,
+  GitCompareArrows,
   RotateCcw,
   Satellite,
   Sprout,
@@ -21,6 +23,7 @@ import {
 } from '@/components/smart-farm/weather-charts'
 import {
   evaluate,
+  assessPlantingConditions,
   cropStageLabels,
   pestRiskLabels,
   farmDisclaimer,
@@ -28,6 +31,7 @@ import {
   type FarmState,
   type PestRisk,
   type AttentionLevel,
+  type PlantingCondition,
 } from '@/lib/farm-rules'
 import {
   moistureToPercent,
@@ -55,6 +59,12 @@ const attentionStyles: Record<
     chip: 'bg-earth/15 text-earth',
     panel: 'border-earth/35 bg-earth/6',
   },
+}
+
+const conditionStyles: Record<PlantingCondition, string> = {
+  favoravel: 'border-primary/30 bg-primary/8 text-primary',
+  atencao: 'border-accent/40 bg-accent/10 text-accent-foreground',
+  limitante: 'border-earth/40 bg-earth/8 text-earth',
 }
 
 function Reading({
@@ -175,7 +185,9 @@ export function FarmPanel({ weather }: { weather: WeatherResult }) {
   }
 
   const [state, setState] = useState<FarmState>(initial)
+  const [comparison, setComparison] = useState<FarmState | null>(null)
   const results = evaluate(state)
+  const assessment = assessPlantingConditions(results)
   const isPristine =
     state.soilMoisture === initial.soilMoisture &&
     state.temperature === initial.temperature &&
@@ -318,6 +330,24 @@ export function FarmPanel({ weather }: { weather: WeatherResult }) {
             </p>
 
             <div className="mt-5 space-y-5">
+              <div>
+                <p className="text-sm font-medium text-foreground">Cenários rápidos</p>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  <Button type="button" variant="outline" size="sm" onClick={() => setState({ ...initial, soilMoisture: 18, rainChance: 20 })}>
+                    Solo seco
+                  </Button>
+                  <Button type="button" variant="outline" size="sm" onClick={() => setState({ ...initial, ph: 4.4 })}>
+                    Solo ácido
+                  </Button>
+                  <Button type="button" variant="outline" size="sm" onClick={() => setState({ ...initial, temperature: 38, pestRisk: 'alto' })}>
+                    Calor e pragas
+                  </Button>
+                  <Button type="button" variant="outline" size="sm" onClick={() => setState({ ...initial, soilMoisture: 48, ph: 6.2, temperature: 27, rainChance: 35, pestRisk: 'baixo' })}>
+                    Sem alertas
+                  </Button>
+                </div>
+              </div>
+
               <SliderControl
                 id="ctrl-umidade"
                 label="Umidade do solo"
@@ -428,12 +458,21 @@ export function FarmPanel({ weather }: { weather: WeatherResult }) {
             <Button
               type="button"
               variant="outline"
-              onClick={() => setState(initial)}
-              disabled={isPristine}
+              onClick={() => setComparison({ ...state })}
               className="mt-6 w-full"
             >
+              <BookmarkPlus className="h-4 w-4" aria-hidden="true" />
+              {comparison ? 'Atualizar cenário A' : 'Guardar como cenário A'}
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setState(initial)}
+              className="mt-2 w-full"
+            >
               <RotateCcw className="h-4 w-4" aria-hidden="true" />
-              Voltar aos dados reais
+              {isPristine ? 'Dados reais restaurados' : 'Voltar aos dados reais'}
             </Button>
           </div>
 
@@ -446,6 +485,58 @@ export function FarmPanel({ weather }: { weather: WeatherResult }) {
               Não há inteligência artificial aqui. São condições fixas, escritas
               por extenso — você consegue refazer o raciocínio inteiro.
             </p>
+
+            {comparison ? (
+              <div className="mt-5 rounded-2xl border border-tech/30 bg-tech/5 p-5">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="flex items-center gap-2 font-serif text-lg font-semibold text-foreground">
+                    <GitCompareArrows className="h-5 w-5 text-tech" />
+                    Cenário A × cenário atual
+                  </p>
+                  <button type="button" onClick={() => setComparison(null)} className="text-xs font-medium text-muted-foreground underline underline-offset-2 hover:text-foreground">
+                    Remover comparação
+                  </button>
+                </div>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[28rem] text-left text-sm">
+                    <thead className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <tr><th className="pb-2">Fator</th><th className="pb-2">Cenário A</th><th className="pb-2">Atual</th></tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/60 text-foreground">
+                      <tr><th className="py-2 font-medium">Umidade</th><td>{comparison.soilMoisture}%</td><td>{state.soilMoisture}%</td></tr>
+                      <tr><th className="py-2 font-medium">pH</th><td>{comparison.ph.toFixed(1).replace('.', ',')}</td><td>{state.ph.toFixed(1).replace('.', ',')}</td></tr>
+                      <tr><th className="py-2 font-medium">Temperatura</th><td>{comparison.temperature} °C</td><td>{state.temperature} °C</td></tr>
+                      <tr><th className="py-2 font-medium">Chuva</th><td>{comparison.rainChance}%</td><td>{state.rainChance}%</td></tr>
+                      <tr><th className="py-2 font-medium">Pragas</th><td>{pestRiskLabels[comparison.pestRisk]}</td><td>{pestRiskLabels[state.pestRisk]}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                  Altere os controles ou escolha um cenário rápido para observar quais fatores mudam a leitura geral.
+                </p>
+              </div>
+            ) : null}
+
+            <div
+              aria-live="polite"
+              className={cn(
+                'mt-5 rounded-2xl border p-5',
+                conditionStyles[assessment.condition],
+              )}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wider">
+                Leitura geral do cenário
+              </p>
+              <p className="mt-2 font-serif text-xl font-semibold text-foreground">
+                {assessment.title}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                {assessment.summary}
+              </p>
+              <p className="mt-3 text-sm font-medium text-foreground">
+                Próximo passo: {assessment.nextStep}
+              </p>
+            </div>
 
             <ul aria-live="polite" className="mt-5 space-y-4">
               {results.map((item) => {
