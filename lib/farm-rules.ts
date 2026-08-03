@@ -25,6 +25,61 @@ export interface Recommendation {
   attention: AttentionLevel
 }
 
+export type PlantingCondition = 'favoravel' | 'atencao' | 'limitante'
+
+export interface PlantingAssessment {
+  condition: PlantingCondition
+  title: string
+  summary: string
+  nextStep: string
+}
+
+/**
+ * Síntese didática das mesmas regras transparentes exibidas no painel. O nome
+ * evita prometer "liberação para plantar": poucos dados não bastam para isso.
+ */
+export function assessPlantingConditions(
+  recommendations: Recommendation[],
+): PlantingAssessment {
+  const highAlerts = recommendations.filter(
+    (item) => item.attention === 'alta',
+  ).length
+  const mediumAlerts = recommendations.filter(
+    (item) => item.attention === 'media',
+  ).length
+
+  if (highAlerts > 0) {
+    return {
+      condition: 'limitante',
+      title: 'Há fatores limitantes para investigar',
+      summary:
+        'Ao menos uma condição exige atenção antes de qualquer decisão de plantio ou manejo.',
+      nextStep:
+        'Confira os alertas prioritários e valide as condições em campo com assistência técnica.',
+    }
+  }
+
+  if (mediumAlerts > 0) {
+    return {
+      condition: 'atencao',
+      title: 'Condições pedem atenção',
+      summary:
+        'O cenário não apresenta alerta crítico, mas há fatores que podem influenciar a decisão.',
+      nextStep:
+        'Compare a previsão, o estágio da cultura e as medições antes de agir.',
+    }
+  }
+
+  return {
+    condition: 'favoravel',
+    title: 'Cenário sem alertas nas regras atuais',
+    summary:
+      'Os dados informados estão dentro das faixas usadas nesta demonstração educacional.',
+    nextStep:
+      'Continue o monitoramento: uma leitura favorável não substitui análise de solo e avaliação local.',
+  }
+}
+
 /** Limiares usados pelas regras. Expostos porque a interface os exibe. */
 export const THRESHOLDS = {
   lowMoisture: 30,

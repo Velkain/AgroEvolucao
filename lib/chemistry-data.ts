@@ -10,6 +10,9 @@ import {
   Cpu,
   Layers,
   Snowflake,
+  MapPinned,
+  Route,
+  CloudSun,
 } from 'lucide-react'
 
 export interface ChemistryTopic {
@@ -24,6 +27,7 @@ export interface ChemistryTopic {
   relevance: string
   /** Curiosidade que amarra o conceito */
   didYouKnow: string
+  source?: { name: string; url: string }
 }
 
 /**
@@ -148,6 +152,57 @@ export const chemistryTopics: ChemistryTopic[] = [
       'É a base de qualquer decisão de manejo. Sem saber o estado do solo, correções e adubações viram tentativa e erro.',
     didYouKnow:
       'A capacidade de troca catiônica depende muito da argila e da matéria orgânica: solos arenosos e pobres em matéria orgânica retêm menos nutrientes.',
+  },
+  {
+    id: 'amostragem-solo',
+    title: 'Amostragem e análise do solo',
+    icon: MapPinned,
+    explanation:
+      'O laboratório analisa uma pequena porção de terra, mas a área agrícola varia em relevo, textura, cor e histórico de manejo. Por isso, a coleta precisa reunir amostras de pontos representativos de uma área relativamente uniforme.',
+    example:
+      'Amostras simples coletadas em diferentes pontos são misturadas para formar uma amostra composta. A identificação do local e da profundidade permite comparar resultados ao longo do tempo.',
+    relevance:
+      'Uma análise precisa feita sobre uma amostra mal coletada continua representando mal o talhão. A qualidade da decisão começa antes do laboratório, no planejamento da coleta.',
+    didYouKnow:
+      'A agricultura de precisão georreferencia os pontos de coleta. Assim, o resultado químico deixa de ser apenas um valor e passa a mostrar onde cada condição ocorre.',
+    source: {
+      name: 'Embrapa — Como amostrar o solo',
+      url: 'https://www.embrapa.br/web/agencia-de-informacao-tecnologica/cultivos/soja/producao/manejo-da-fertilidade-do-solo/analise-do-solo/como-amostrar',
+    },
+  },
+  {
+    id: 'caminhos-nutrientes',
+    title: 'Caminhos e perdas de nutrientes',
+    icon: Route,
+    explanation:
+      'Depois de chegar ao solo, um nutriente pode ser absorvido pela planta, permanecer retido, reagir com minerais, mover-se com a água ou voltar à atmosfera. O destino depende da forma química, do solo, do clima e do manejo.',
+    example:
+      'Formas solúveis podem descer no perfil com a água; partículas com fósforo podem ser carregadas pela erosão; e parte do nitrogênio pode se perder na forma de gases.',
+    relevance:
+      'Nutriente perdido deixa de alimentar a cultura e pode alcançar águas superficiais, lençóis subterrâneos ou a atmosfera. Monitorar o solo e evitar excessos reduz desperdício e impacto ambiental.',
+    didYouKnow:
+      'O enriquecimento excessivo da água por nitrogênio e fósforo pode estimular algas. A decomposição dessa biomassa consome oxigênio e prejudica organismos aquáticos — processo chamado eutrofização.',
+    source: {
+      name: 'Embrapa — Perdas de nutrientes',
+      url: 'https://www.embrapa.br/en/web/agencia-de-informacao-tecnologica/tematicas/agricultura-e-meio-ambiente/qualidade/residuos/perdas-de-nutrientes',
+    },
+  },
+  {
+    id: 'carbono-solo',
+    title: 'Carbono, solo e atmosfera',
+    icon: CloudSun,
+    explanation:
+      'Na fotossíntese, as plantas retiram dióxido de carbono da atmosfera e transformam esse carbono em biomassa. Raízes e resíduos levam parte dele ao solo, enquanto respiração e decomposição devolvem parte à atmosfera.',
+    example:
+      'Palhada, raízes e organismos alimentam a matéria orgânica. O revolvimento, a erosão, a umidade e a temperatura influenciam sua decomposição e o tempo que o carbono permanece no solo.',
+    relevance:
+      'Conservar matéria orgânica favorece estrutura, retenção de água e ciclagem de nutrientes. O balanço de carbono, porém, depende do sistema inteiro e não pode ser concluído por uma única medição.',
+    didYouKnow:
+      '“Carbono no solo” não significa carbono parado para sempre. Ele circula continuamente entre compostos com diferentes velocidades de decomposição.',
+    source: {
+      name: 'Embrapa — Estrutura e natureza química da matéria orgânica do solo',
+      url: 'https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1154932/estrutura-e-natureza-quimica-da-materia-organica-do-solo',
+    },
   },
   {
     id: 'conservacao',

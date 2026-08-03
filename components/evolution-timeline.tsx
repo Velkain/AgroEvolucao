@@ -1,6 +1,7 @@
 import { Info } from 'lucide-react'
 import { TimelineStageCard } from '@/components/timeline/timeline-stage-card'
 import { TimelineTrack } from '@/components/timeline/timeline-track'
+import { MobileTimelineNavigator } from '@/components/timeline/mobile-timeline-navigator'
 import { stageThemeMap } from '@/components/timeline/stage-theme'
 import { timelineStages, timelineDisclaimer } from '@/lib/timeline-data'
 import { cn } from '@/lib/utils'
@@ -75,8 +76,10 @@ export function EvolutionTimeline() {
           </div>
         </div>
 
-        {/* Vertical — do celular ao desktop médio, onde cinco colunas não cabem */}
-        <div className="relative mt-12 xl:hidden">
+        <MobileTimelineNavigator />
+
+        {/* Vertical — tablets e desktop médio, onde cinco colunas não cabem */}
+        <div className="relative mt-12 hidden md:block xl:hidden">
           <TimelineTrack
             orientation="vertical"
             className="absolute bottom-6 left-6 top-6 w-0.5"

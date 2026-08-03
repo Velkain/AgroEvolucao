@@ -1,7 +1,8 @@
-import { BookOpen, ExternalLink, Info, PenLine, Satellite } from 'lucide-react'
+import { BookMarked, BookOpen, ExternalLink, Info, PenLine, Satellite } from 'lucide-react'
 import {
   institutionalSources,
   usedInThisProject,
+  contentSources,
   toFill,
   referencesNote,
 } from '@/lib/references-data'
@@ -55,6 +56,18 @@ export function ReferencesSection() {
             Instituições de referência para consulta, mais o que este site
             efetivamente usa. Nada aqui foi inventado para preencher espaço.
           </p>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+            <BookMarked className="h-5 w-5 text-accent-foreground" aria-hidden="true" />
+            Fontes consultadas para o conteúdo
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Estas páginas e publicações embasam os temas de solo, nutrientes,
+            carbono, agricultura de precisão e bioinsumos apresentados no site.
+          </p>
+          <SourceList items={contentSources} />
         </div>
 
         <div className="mt-12">

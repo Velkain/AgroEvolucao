@@ -59,6 +59,46 @@ export const usedInThisProject: ReferenceEntry[] = [
   },
 ]
 
+/** Publicações e páginas específicas consultadas na redação do conteúdo. */
+export const contentSources: ReferenceEntry[] = [
+  {
+    name: 'Embrapa — Como amostrar o solo',
+    url: 'https://www.embrapa.br/web/agencia-de-informacao-tecnologica/cultivos/soja/producao/manejo-da-fertilidade-do-solo/analise-do-solo/como-amostrar',
+    description:
+      'Explica por que a área deve ser dividida em regiões homogêneas e como amostras simples formam uma amostra composta representativa.',
+  },
+  {
+    name: 'Embrapa — Perdas de nutrientes',
+    url: 'https://www.embrapa.br/en/web/agencia-de-informacao-tecnologica/tematicas/agricultura-e-meio-ambiente/qualidade/residuos/perdas-de-nutrientes',
+    description:
+      'Apresenta destinos do nitrogênio e mecanismos como absorção, escoamento, lixiviação, volatilização e desnitrificação.',
+  },
+  {
+    name: 'Embrapa — Estrutura e natureza química da matéria orgânica do solo',
+    url: 'https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1154932/estrutura-e-natureza-quimica-da-materia-organica-do-solo',
+    description:
+      'Publicação de 2023 sobre matéria orgânica, dinâmica e reatividade do carbono no solo e sua relação com gases de efeito estufa.',
+  },
+  {
+    name: 'Embrapa — Experimentação on-farm na agricultura de precisão',
+    url: 'https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1150179/experimentacao-on-farm-na-agricultura-de-precisao',
+    description:
+      'Publicação de 2022 sobre possibilidades, dificuldades e metodologia de experimentos de agricultura de precisão realizados na propriedade.',
+  },
+  {
+    name: 'Embrapa — Controle biológico e bioinsumos',
+    url: 'https://www.embrapa.br/en/recursos-geneticos-e-biotecnologia/controle-biologico-e-bioinsumos',
+    description:
+      'Página institucional sobre pesquisas e soluções que utilizam organismos e processos biológicos no controle de pragas.',
+  },
+  {
+    name: 'US EPA — Nutrient Pollution: Sources and Solutions in Agriculture',
+    url: 'https://www.epa.gov/nutrientpollution/sources-and-solutions-agriculture',
+    description:
+      'Explica como nitrogênio e fósforo não absorvidos podem alcançar a água e contribuir para eutrofização e perda de oxigênio.',
+  },
+]
+
 /**
  * Campos que precisam ser preenchidos por quem fez o trabalho.
  * Ficam visíveis de propósito: um espaço em branco declarado é mais honesto

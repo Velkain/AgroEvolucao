@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, MonitorPlay } from 'lucide-react'
+import { ChevronDown, Menu, MonitorPlay } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -22,6 +22,17 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const active = useActiveSection()
   const { enter } = usePresentation()
+  const primaryNavIds = new Set([
+    'inicio',
+    'evolucao',
+    'dados',
+    'fazenda-inteligente',
+    'quiz',
+    'resumo',
+  ])
+  const primaryLinks = navLinks.filter((link) => primaryNavIds.has(link.href.slice(1)))
+  const secondaryLinks = navLinks.filter((link) => !primaryNavIds.has(link.href.slice(1)))
+  const secondaryActive = secondaryLinks.some((link) => active === link.href.slice(1))
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
@@ -52,7 +63,7 @@ export function SiteHeader() {
           aria-label="Navegação principal"
           className="hidden items-center xl:flex"
         >
-          {navLinks.map((link) => {
+          {primaryLinks.map((link) => {
             const id = link.href.slice(1)
             const isActive = active === id
             return (
@@ -71,6 +82,39 @@ export function SiteHeader() {
               </a>
             )
           })}
+          <details className="group relative">
+            <summary
+              className={cn(
+                'flex cursor-pointer list-none items-center gap-1 rounded-md px-2 py-2 text-[0.8125rem] font-medium transition-colors marker:content-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+                secondaryActive
+                  ? 'bg-secondary text-primary'
+                  : 'text-foreground/80 hover:bg-secondary hover:text-primary',
+              )}
+            >
+              Mais
+              <ChevronDown className="h-3.5 w-3.5 transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="absolute right-0 top-full mt-2 grid min-w-56 gap-1 rounded-xl border border-border bg-card p-2 elev-2">
+              {secondaryLinks.map((link) => {
+                const isActive = active === link.href.slice(1)
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={cn(
+                      'rounded-lg px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-ring',
+                      isActive
+                        ? 'bg-secondary font-medium text-primary'
+                        : 'text-foreground/80 hover:bg-secondary',
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
+            </div>
+          </details>
         </nav>
 
         {/* Controles: tema sempre visível, menu só abaixo de xl */}

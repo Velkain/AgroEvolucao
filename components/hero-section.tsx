@@ -1,31 +1,15 @@
+import Image from 'next/image'
 import {
   Sparkles,
   Sprout,
   Wheat,
-  Shovel,
   ArrowRight,
   PlayCircle,
   Cpu,
-  Radar,
-  Plane,
-  Brain,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { heroTags } from '@/lib/site-data'
-
-const pastItems = [
-  { icon: Shovel, label: 'Arado' },
-  { icon: Sprout, label: 'Cultivo manual' },
-  { icon: Wheat, label: 'Solo e colheita' },
-]
-
-const futureItems = [
-  { icon: Plane, label: 'Drones' },
-  { icon: Radar, label: 'Sensores' },
-  { icon: Cpu, label: 'Dados' },
-  { icon: Brain, label: 'IA' },
-]
 
 export function HeroSection() {
   return (
@@ -44,7 +28,7 @@ export function HeroSection() {
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
         {/* Conteúdo */}
-        <div className="max-w-xl">
+        <div className="max-w-2xl">
           <Badge className="gap-1.5 bg-accent text-accent-foreground">
             <Sparkles className="h-3.5 w-3.5" />
             Tecnologia e Química em Ação
@@ -58,9 +42,9 @@ export function HeroSection() {
           </h1>
 
           <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
-            Uma viagem interativa pelos principais acontecimentos, tecnologias e
-            transformações que marcaram a agricultura desde os primeiros
-            cultivos até a Agricultura 5.0.
+            Descubra como conhecimento do solo, química, máquinas e dados
+            mudaram a produção de alimentos — e teste decisões de uma fazenda
+            conectada ao longo do percurso.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -70,20 +54,20 @@ export function HeroSection() {
               botão sobre um elemento que não é botão.
             */}
             <Button
-              render={<a href="#objetivo" />}
+              render={<a href="#evolucao" />}
               nativeButton={false}
               size="lg"
             >
               <PlayCircle className="h-5 w-5" />
-              Iniciar apresentação
+              Começar pela linha do tempo
             </Button>
             <Button
-              render={<a href="#introducao" />}
+              render={<a href="#fazenda-inteligente" />}
               nativeButton={false}
               variant="outline"
               size="lg"
             >
-              Explorar evolução
+              Testar a fazenda
               <ArrowRight className="h-5 w-5" />
             </Button>
           </div>
@@ -99,56 +83,27 @@ export function HeroSection() {
           </ul>
         </div>
 
-        {/* Visual passado -> futuro */}
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4">
-          {/* Passado */}
-          <div className="rounded-2xl border border-earth/30 bg-earth/10 p-4 sm:p-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-earth">
-              Passado
-            </p>
-            <ul className="flex flex-col gap-3">
-              {pastItems.map((item) => (
-                <li key={item.label} className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-earth/15 text-earth">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <span className="text-sm font-medium text-foreground/85">
-                    {item.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Transição */}
-          <div
-            className="flex flex-col items-center gap-1 text-accent"
-            aria-hidden="true"
-          >
-            <span className="h-10 w-px bg-gradient-to-b from-earth/40 to-accent sm:h-16" />
-            <ArrowRight className="h-6 w-6" />
-            <span className="h-10 w-px bg-gradient-to-b from-accent to-primary sm:h-16" />
-          </div>
-
-          {/* Futuro */}
-          <div className="rounded-2xl border border-tech/30 bg-tech/10 p-4 sm:p-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-tech">
-              Futuro
-            </p>
-            <ul className="flex flex-col gap-3">
-              {futureItems.map((item) => (
-                <li key={item.label} className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-tech/15 text-tech">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <span className="text-sm font-medium text-foreground/85">
-                    {item.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        {/* Cena passado -> futuro */}
+        <figure className="group relative overflow-hidden rounded-3xl border border-border bg-card elev-3">
+          <Image
+            src="/images/hero-agroevolucao-v2.webp"
+            alt="Paisagem agrícola que evolui do arado manual para o trator, sensores, satélite e drone"
+            width={1672}
+            height={941}
+            priority
+            sizes="(min-width: 1024px) 44vw, 92vw"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent" />
+          <figcaption className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 p-4 text-xs font-semibold text-white sm:text-sm">
+            <span className="flex items-center gap-1.5"><Wheat className="h-4 w-4" /> Experiência</span>
+            <span className="flex items-center justify-center gap-1.5"><Sprout className="h-4 w-4" /> Ciência</span>
+            <span className="flex items-center justify-end gap-1.5"><Cpu className="h-4 w-4" /> Dados</span>
+          </figcaption>
+          <span className="absolute right-4 top-4 rounded-full border border-white/30 bg-black/35 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
+            Agricultura 1.0 → 5.0
+          </span>
+        </figure>
       </div>
     </section>
   )
