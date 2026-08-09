@@ -8,7 +8,6 @@
  *   uma verificado. São pontos de partida legítimos para consulta, não citações
  *   de trabalhos específicos.
  * - `usedInThisProject`: fontes que este site efetivamente consome ou consumiu.
- * - `toFill`: espaços que só quem fez o trabalho pode preencher.
  */
 
 export interface ReferenceEntry {
@@ -98,26 +97,3 @@ export const contentSources: ReferenceEntry[] = [
       'Explica como nitrogênio e fósforo não absorvidos podem alcançar a água e contribuir para eutrofização e perda de oxigênio.',
   },
 ]
-
-/**
- * Campos que precisam ser preenchidos por quem fez o trabalho.
- * Ficam visíveis de propósito: um espaço em branco declarado é mais honesto
- * que uma referência inventada para preencher a lacuna.
- */
-export const toFill: { label: string; hint: string }[] = [
-  {
-    label: 'Material didático utilizado em aula',
-    hint: 'Livro, apostila ou slides indicados pelo professor — com título, autoria e ano conforme constam no próprio material.',
-  },
-  {
-    label: 'Páginas específicas consultadas',
-    hint: 'Se alguma página das instituições acima foi consultada em detalhe, registre o título exato e a data em que foi acessada.',
-  },
-  {
-    label: 'Outras fontes usadas pelo grupo',
-    hint: 'Vídeos, entrevistas, visitas técnicas ou qualquer outro material que tenha embasado o conteúdo.',
-  },
-]
-
-export const referencesNote =
-  'A classificação entre Agricultura 1.0, 2.0, 3.0, 4.0 e 5.0 é utilizada como uma organização didática. Alguns períodos e características podem variar conforme a fonte consultada.'

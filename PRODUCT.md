@@ -68,11 +68,6 @@ Assume abertamente que a classificação 1.0–5.0 é uma organização didátic
 - Conteúdo didático redigido para as três primeiras etapas da linha do tempo.
 - Uma atividade interativa embrionária: "Você reconhece este equipamento?", na Agricultura 2.0.
 
-**Ausências que trabalhos futuros não podem preencher por invenção:**
-- Não há nenhuma fonte bibliográfica levantada até agora.
-- Não há dados, estatísticas ou séries numéricas reais no projeto.
-- Não há ilustrações para as Agriculturas 4.0 e 5.0.
-
 ## Product Principles
 
 1. **A química é o fio condutor, não um apêndice.** Sendo trabalho de Química, a participação química precisa aparecer com peso próprio em toda etapa, e não como um item de lista entre outros.

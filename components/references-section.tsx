@@ -1,10 +1,8 @@
-import { BookMarked, BookOpen, ExternalLink, Info, PenLine, Satellite } from 'lucide-react'
+import { BookMarked, BookOpen, ExternalLink, Satellite } from 'lucide-react'
 import {
   institutionalSources,
   usedInThisProject,
   contentSources,
-  toFill,
-  referencesNote,
 } from '@/lib/references-data'
 
 function SourceList({ items }: { items: typeof institutionalSources }) {
@@ -93,43 +91,6 @@ export function ReferencesSection() {
           </p>
           <SourceList items={institutionalSources} />
         </div>
-
-        <div className="mt-12">
-          <h3 className="flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
-            <PenLine className="h-5 w-5 text-accent-foreground" aria-hidden="true" />
-            A preencher pelo grupo
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Estes campos ficam em branco de propósito. Só quem fez o trabalho
-            sabe o que consultou — e um espaço declarado é mais honesto que uma
-            referência inventada.
-          </p>
-          <ul className="mt-4 space-y-3">
-            {toFill.map((item) => (
-              <li
-                key={item.label}
-                className="rounded-xl border border-dashed border-accent/40 bg-accent/5 p-4 sm:p-5"
-              >
-                <p className="font-medium text-foreground">{item.label}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {item.hint}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Para preencher, edite{' '}
-            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">
-              lib/references-data.ts
-            </code>
-            .
-          </p>
-        </div>
-
-        <p className="mt-12 flex items-start gap-3 rounded-xl border border-border bg-background p-4 text-sm leading-relaxed text-muted-foreground sm:p-5">
-          <Info className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-          {referencesNote}
-        </p>
       </div>
     </section>
   )
