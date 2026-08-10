@@ -2,7 +2,6 @@ import {
   ArrowRight,
   Brain,
   HelpCircle,
-  ListOrdered,
   SlidersHorizontal,
   Sparkles,
   type LucideIcon,
@@ -49,14 +48,6 @@ const activities: ActivityLink[] = [
     description:
       'Parta do clima real de Sorriso e mude umidade, pH e chuva para ver a recomendação mudar.',
     location: 'Na fazenda inteligente',
-  },
-  {
-    href: '#atividade-ordenar',
-    icon: ListOrdered,
-    title: 'Ordene a linha do tempo',
-    description:
-      'Coloque as cinco etapas da agricultura em ordem cronológica.',
-    location: 'No resumo',
   },
   {
     href: '#quiz',

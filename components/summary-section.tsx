@@ -1,5 +1,4 @@
 import { Check } from 'lucide-react'
-import { TimelineOrder } from '@/components/activities/timeline-order'
 import { Reveal } from '@/components/reveal'
 import { stagger } from '@/lib/animation'
 import {
@@ -71,11 +70,6 @@ export function SummarySection() {
             </Reveal>
           ))}
         </ul>
-
-        {/* Fechamento ativo: recontar a sequência inteira antes de sair */}
-        <div className="mx-auto mt-14 max-w-3xl">
-          <TimelineOrder />
-        </div>
       </div>
     </section>
   )
