@@ -19,6 +19,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PresentationProvider } from '@/components/presentation/presentation-provider'
 import { PresentationBar } from '@/components/presentation/presentation-bar'
 import { SplashGate } from '@/components/splash-gate'
+import { AgroBotSlidesSection } from '@/components/agrobot-slides-section'
 
 export default function HomePage() {
   return (
@@ -60,6 +61,7 @@ export default function HomePage() {
             <SummarySection />
             <ReferencesSection />
             <GroupMembersSection />
+            <AgroBotSlidesSection />
           </main>
 
           <SiteFooter />

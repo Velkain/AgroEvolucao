@@ -250,6 +250,33 @@
     var(--elev-3);
 }
 
+/* O palco dos slides abandona os limites do diálogo quando entra em tela cheia. */
+[data-slide-stage]:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+}
+
+[data-slide-stage]:fullscreen [data-slide-header],
+[data-slide-stage]:fullscreen [data-slide-footer] {
+  display: none;
+}
+
+[data-slide-stage]:fullscreen [data-slide-canvas] {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+}
+
+[data-slide-stage]:fullscreen [data-slide-frame] {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /*
  * Modo apresentação: o conteúdo e os controles ocupam linhas diferentes do
  * viewport. Assim a barra nunca cobre o fim de um card e cada seção curta se

@@ -365,6 +365,13 @@ export function QuizSection() {
                           : selected
                             ? 'selected'
                             : 'idle'
+                      const reviewLabel = correct
+                        ? selected
+                          ? 'Sua resposta · correta'
+                          : 'Resposta correta'
+                        : wrong
+                          ? 'Sua resposta'
+                          : null
 
                       return (
                         <label
@@ -409,7 +416,16 @@ export function QuizSection() {
                               LETTERS[i]
                             )}
                           </span>
-                          <span className="text-sm leading-relaxed">{option}</span>
+                          <span className="min-w-0 text-sm leading-relaxed">
+                            {reviewLabel ? (
+                              <span className="block text-[0.65rem] font-bold uppercase tracking-wider opacity-75">
+                                {reviewLabel}
+                              </span>
+                            ) : null}
+                            <span className={cn('block', reviewLabel && 'mt-0.5 font-medium')}>
+                              {option}
+                            </span>
+                          </span>
                         </label>
                       )
                     })}

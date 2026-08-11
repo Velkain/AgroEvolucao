@@ -134,6 +134,12 @@ export const siteSections: SiteSection[] = [
     presentationLabel: 'Integrantes do grupo',
     inNav: false,
   },
+  {
+    id: 'slides-agrobot',
+    label: 'AgroBot',
+    presentationLabel: 'Apresentação complementar do AgroBot Vision',
+    inNav: false,
+  },
 ]
 
 /** Subconjunto exibido no menu. Derivado, nunca mantido em paralelo. */
