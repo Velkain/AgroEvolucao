@@ -443,6 +443,128 @@
   line-height: 1.3;
 }
 
+/*
+ * O quiz usa uma imagem contextual sem sacrificar a área de leitura. Durante
+ * uma rodada, o enunciado continua no mesmo grid ao revelar o feedback; apenas
+ * os intervalos diminuem para evitar saltos e preservar o palco inteiro.
+ */
+.presenting [data-quiz-section] {
+  padding-block: clamp(0.75rem, 1.5vh, 1.25rem) !important;
+}
+
+.presenting [data-quiz-heading] h2 {
+  font-size: clamp(1.5rem, 3.4vh, 2rem);
+  line-height: 1.05;
+}
+
+.presenting [data-quiz-heading] p {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.presenting
+  [data-quiz-section]:is(
+    [data-quiz-phase='answering'],
+    [data-quiz-phase='feedback']
+  )
+  [data-quiz-heading]
+  p {
+  display: none;
+}
+
+.presenting
+  [data-quiz-section]:is(
+    [data-quiz-phase='answering'],
+    [data-quiz-phase='feedback']
+  )
+  [data-quiz-card] {
+  margin-top: clamp(0.625rem, 1.5vh, 0.875rem) !important;
+}
+
+.presenting [data-quiz-content] {
+  padding: clamp(0.875rem, 2vh, 1.25rem);
+}
+
+.presenting [data-quiz-media] {
+  min-height: clamp(24rem, 62vh, 32rem);
+}
+
+.presenting [data-quiz-meta] {
+  gap: 0.375rem;
+  font-size: 0.75rem;
+}
+
+.presenting [data-quiz-progress] {
+  height: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+.presenting [data-quiz-question-heading] {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 2.4vh, 1.2rem);
+  line-height: 1.35;
+}
+
+.presenting [data-quiz-options] {
+  margin-top: 0.75rem;
+}
+
+.presenting [data-quiz-options] > div {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.presenting [data-quiz-options] > div > * {
+  margin-block: 0 !important;
+}
+
+.presenting [data-quiz-option] {
+  min-height: 2.5rem;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+}
+
+.presenting [data-quiz-feedback] {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+}
+
+.presenting [data-quiz-explanation] {
+  margin-top: 0.375rem;
+  line-height: 1.4;
+}
+
+.presenting [data-quiz-fact] {
+  margin-top: 0.5rem;
+  padding: 0.625rem;
+}
+
+.presenting [data-quiz-fact] > :last-child {
+  margin-top: 0.25rem;
+  line-height: 1.35;
+}
+
+.presenting [data-quiz-action] {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 63.999rem) {
+  .presenting [data-quiz-media] {
+    min-height: 7rem;
+    aspect-ratio: 21 / 6;
+  }
+
+  .presenting [data-quiz-media] figcaption {
+    gap: 0.25rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .presenting [data-quiz-credit] {
+    font-size: 0.625rem;
+  }
+}
+
 [data-chemistry-tabs] {
   scrollbar-width: none;
 }

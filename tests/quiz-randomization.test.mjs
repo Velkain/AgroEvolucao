@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
+import { existsSync } from 'node:fs'
+import path from 'node:path'
 import test from 'node:test'
-import { quizQuestions } from '../lib/quiz-data.ts'
+import { quizLicenseUrls, quizQuestions } from '../lib/quiz-data.ts'
 import {
   prepareQuizQuestions,
   restorePreparedQuestions,
@@ -156,6 +158,35 @@ test('cada questão do banco tem cinco alternativas e gabarito válido', () => {
       `${question.id} deve apontar para uma alternativa existente`,
     )
     assert.ok(!ids.has(question.id), `${question.id} está duplicado`)
+    assert.ok(question.fact.trim().length >= 24, `${question.id} deve ter uma curiosidade útil`)
+    assert.equal(
+      question.media.src,
+      `/images/quiz/${question.id}.webp`,
+      `${question.id} deve usar um asset local com o mesmo ID`,
+    )
+    assert.ok(question.media.alt.trim(), `${question.id} deve descrever a imagem`)
+    assert.match(
+      question.media.label,
+      /imagem ilustrativa/i,
+      `${question.id} deve deixar claro que a foto é ilustrativa`,
+    )
+    assert.ok(question.media.credit.author.trim(), `${question.id} deve creditar o autor`)
+    assert.ok(question.media.credit.sourceName.trim(), `${question.id} deve informar a fonte`)
+    assert.doesNotThrow(
+      () => new URL(question.media.credit.sourcePageUrl),
+      `${question.id} deve apontar para a página da fonte`,
+    )
+    assert.ok(question.media.credit.license.trim(), `${question.id} deve informar a licença`)
+    assert.doesNotThrow(
+      () => new URL(quizLicenseUrls[question.media.credit.license]),
+      `${question.id} deve expor o link direto da licença`,
+    )
+    const mediaPath = path.join(
+      process.cwd(),
+      'public',
+      ...question.media.src.split('/').filter(Boolean),
+    )
+    assert.ok(existsSync(mediaPath), `${question.id} deve ter seu WebP local`)
     ids.add(question.id)
   }
 })

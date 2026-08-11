@@ -1,9 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import {
   ArrowRight,
   Check,
+  ExternalLink,
   Flame,
   Lightbulb,
   RotateCcw,
@@ -12,7 +14,12 @@ import {
   X,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { quizQuestions, quizIntro, type QuizQuestion } from '@/lib/quiz-data'
+import {
+  quizLicenseUrls,
+  quizQuestions,
+  quizIntro,
+  type QuizQuestion,
+} from '@/lib/quiz-data'
 import {
   prepareQuizQuestions,
   restorePreparedQuestions,
@@ -80,6 +87,7 @@ export function QuizSection() {
 
   const question = questions[index]
   const total = questions.length
+  const questionInProgress = phase === 'answering' || phase === 'feedback'
   const isCorrect = question ? choice === question.answer : false
   const score = answers.filter((given, i) => given === questions[i]?.answer).length
   const progress = phase === 'done' ? 100 : total ? ((index + (phase === 'feedback' ? 1 : 0)) / total) * 100 : 0
@@ -150,14 +158,32 @@ export function QuizSection() {
   }
 
   return (
-    <section id="quiz" aria-labelledby="quiz-title" className="scroll-mt-20 border-t border-border/60 bg-card py-20 sm:py-24">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+    <section
+      id="quiz"
+      data-quiz-section
+      data-quiz-phase={phase}
+      aria-labelledby="quiz-title"
+      className="scroll-mt-20 border-t border-border/60 bg-card py-20 sm:py-24"
+    >
+      <div
+        data-quiz-container
+        className={cn(
+          'mx-auto px-4 sm:px-6 lg:px-8',
+          questionInProgress ? 'max-w-6xl' : 'max-w-3xl',
+        )}
+      >
+        <div data-quiz-heading className="mx-auto max-w-3xl text-center">
           <h2 id="quiz-title" className="text-balance font-serif text-3xl font-semibold text-primary sm:text-4xl">Teste o que você aprendeu</h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">{quizIntro}</p>
         </div>
 
-        <div className="mt-12 rounded-2xl border border-border bg-background p-6 elev-1 sm:p-8">
+        <div
+          data-quiz-card
+          className={cn(
+            'mt-12 rounded-2xl border border-border bg-background elev-1',
+            questionInProgress ? 'overflow-hidden' : 'p-6 sm:p-8',
+          )}
+        >
           {phase === 'intro' ? (
             <div className="text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-tech/12 text-tech"><Sparkles className="h-7 w-7" /></span>
@@ -215,35 +241,240 @@ export function QuizSection() {
               </div>
             </div>
           ) : question ? (
-            <div>
-              <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
-                <span>Questão {index + 1} de {total}</span>
-                <span className="flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 font-semibold text-accent-foreground"><Flame className="h-4 w-4" />Sequência {streak}</span>
-                <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-medium">{question.topic} · {question.difficulty === 'fundamentos' ? 'Fundamentos' : question.difficulty === 'aplicacao' ? 'Aplicação' : 'Desafio'}</span>
-              </div>
-              <div role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} className="mt-3 h-2 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{ width: `${progress}%` }} /></div>
-              <h3 className="mt-6 text-pretty font-serif text-xl leading-relaxed">{question.statement}</h3>
-              <fieldset className="mt-6" disabled={phase === 'feedback'}>
-                <legend className="sr-only">Alternativas</legend>
-                <div className="space-y-2">
-                  {question.options.map((option, i) => {
-                    const selected = choice === i
-                    const correct = phase === 'feedback' && i === question.answer
-                    const wrong = phase === 'feedback' && selected && !correct
-                    return <label key={question.optionOrder[i]} className={cn('relative flex items-start gap-3 rounded-xl border p-3.5 transition focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring', phase === 'answering' ? 'cursor-pointer' : 'cursor-default', correct && 'border-primary/50 bg-primary/8', wrong && 'border-earth/50 bg-earth/8', phase === 'answering' && selected && 'border-primary bg-primary/5', phase === 'answering' && !selected && 'hover:bg-muted')}>
-                      <input className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0 disabled:cursor-default" type="radio" name={question.id} checked={selected} onChange={() => setChoice(i)} />
-                      <span className={cn('flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-bold', correct ? 'bg-primary text-primary-foreground' : wrong ? 'bg-earth text-earth-foreground' : selected ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground')}>{correct ? <Check className="h-4 w-4" /> : wrong ? <X className="h-4 w-4" /> : LETTERS[i]}</span>
-                      <span className="text-sm leading-relaxed">{option}</span>
-                    </label>
-                  })}
+            <div
+              data-quiz-question
+              className="grid lg:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1.18fr)]"
+            >
+              <figure
+                data-quiz-media
+                className="relative aspect-[16/7] overflow-hidden bg-muted sm:aspect-[16/6] lg:aspect-auto lg:min-h-[32rem]"
+              >
+                <Image
+                  key={question.id}
+                  data-quiz-image
+                  src={question.media.src}
+                  alt={question.media.alt}
+                  fill
+                  sizes="(min-width: 1024px) 36vw, 100vw"
+                  className={cn(
+                    'object-cover transition-[transform,filter] duration-700 ease-out motion-reduce:transition-none',
+                    phase === 'feedback' && 'scale-[1.035] brightness-[0.72]',
+                  )}
+                  style={{ objectPosition: question.media.objectPosition ?? 'center' }}
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-transparent via-transparent to-background/20 lg:block"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-1.5 p-4 text-white sm:p-5">
+                  <span className="rounded-full bg-black/45 px-2.5 py-1 text-xs font-semibold backdrop-blur-sm">
+                    {question.media.label}
+                  </span>
+                  <span
+                    data-quiz-credit
+                    className="flex max-w-full flex-wrap items-center gap-x-1 text-[0.6875rem] leading-snug text-white/90"
+                  >
+                    <a
+                      href={question.media.credit.sourcePageUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Fonte da imagem: ${question.media.credit.author}, ${question.media.credit.sourceName}. Abre em nova aba.`}
+                      className="inline-flex items-start gap-1 underline decoration-white/45 underline-offset-2 transition hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      <span>
+                        {question.media.credit.author} · {question.media.credit.sourceName}
+                      </span>
+                      <ExternalLink className="mt-0.5 h-3 w-3 shrink-0" aria-hidden="true" />
+                    </a>
+                    <span aria-hidden="true">·</span>
+                    <a
+                      href={quizLicenseUrls[question.media.credit.license]}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${question.media.credit.license}. Abre a licença em nova aba.`}
+                      className="underline decoration-white/45 underline-offset-2 transition hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      {question.media.credit.license}
+                    </a>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <div data-quiz-content className="flex min-w-0 flex-col p-5 sm:p-6 lg:p-8">
+                <div
+                  data-quiz-meta
+                  className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
+                >
+                  <span data-numeric className="mr-auto">
+                    Questão {index + 1} de {total}
+                  </span>
+                  <span className="flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 font-semibold text-accent-foreground">
+                    <Flame className="h-4 w-4" aria-hidden="true" />
+                    Sequência {streak}
+                  </span>
+                  <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-medium">
+                    {question.topic} ·{' '}
+                    {question.difficulty === 'fundamentos'
+                      ? 'Fundamentos'
+                      : question.difficulty === 'aplicacao'
+                        ? 'Aplicação'
+                        : 'Desafio'}
+                  </span>
                 </div>
-              </fieldset>
-              {phase === 'feedback' && <div aria-live="polite" className={cn('mt-6 rounded-xl border p-5', isCorrect ? 'border-primary/30 bg-primary/5' : 'border-earth/30 bg-earth/5')}>
-                <p className={cn('font-semibold', isCorrect ? 'text-primary' : 'text-earth')}>{isCorrect ? 'Boa! Resposta correta.' : `Quase — a resposta correta é ${LETTERS[question.answer]}.`}</p>
-                <p className="mt-3 flex items-start gap-2 text-sm leading-relaxed"><Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-accent-foreground" />{question.explanation}</p>
-              </div>}
-              <div className="mt-6">
-                {phase === 'answering' ? <Button type="button" onClick={confirm} disabled={choice === null}>Confirmar resposta</Button> : <Button type="button" onClick={advance}>{index + 1 === total ? 'Ver meu diagnóstico' : 'Próxima questão'}<ArrowRight className="h-4 w-4" /></Button>}
+                <div
+                  data-quiz-progress
+                  role="progressbar"
+                  aria-label={`Progresso do quiz: ${Math.round(progress)}%`}
+                  aria-valuenow={progress}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  className="mt-3 h-2 overflow-hidden rounded-full bg-muted"
+                >
+                  <div
+                    className="h-full rounded-full bg-primary transition-[width] duration-500 motion-reduce:transition-none"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                <h3
+                  id={`quiz-question-${question.id}`}
+                  data-quiz-question-heading
+                  className="mt-6 text-pretty font-serif text-xl leading-relaxed"
+                >
+                  {question.statement}
+                </h3>
+                <fieldset
+                  data-quiz-options
+                  aria-labelledby={`quiz-question-${question.id}`}
+                  className="mt-6"
+                  disabled={phase === 'feedback'}
+                >
+                  <legend className="sr-only">Escolha uma alternativa</legend>
+                  <div className="space-y-2">
+                    {question.options.map((option, i) => {
+                      const selected = choice === i
+                      const correct = phase === 'feedback' && i === question.answer
+                      const wrong = phase === 'feedback' && selected && !correct
+                      const optionState = correct
+                        ? 'correct'
+                        : wrong
+                          ? 'wrong'
+                          : selected
+                            ? 'selected'
+                            : 'idle'
+
+                      return (
+                        <label
+                          key={question.optionOrder[i]}
+                          data-quiz-option
+                          data-state={optionState}
+                          className={cn(
+                            'relative flex min-h-11 items-start gap-3 rounded-xl border p-3.5 transition focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring',
+                            phase === 'answering' ? 'cursor-pointer' : 'cursor-default',
+                            correct && 'border-primary/50 bg-primary/8',
+                            wrong && 'border-earth/50 bg-earth/8',
+                            phase === 'answering' && selected && 'border-primary bg-primary/5',
+                            phase === 'answering' && !selected && 'hover:bg-muted',
+                          )}
+                        >
+                          <input
+                            className="absolute left-3.5 top-3.5 z-10 h-7 w-7 cursor-pointer opacity-0 disabled:cursor-default"
+                            type="radio"
+                            name={question.id}
+                            checked={selected}
+                            aria-label={`Alternativa ${LETTERS[i]}: ${option}`}
+                            onChange={() => setChoice(i)}
+                          />
+                          <span
+                            aria-hidden="true"
+                            className={cn(
+                              'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-bold',
+                              correct
+                                ? 'bg-primary text-primary-foreground'
+                                : wrong
+                                  ? 'bg-earth text-earth-foreground'
+                                  : selected
+                                    ? 'bg-primary/15 text-primary'
+                                    : 'bg-muted text-muted-foreground',
+                            )}
+                          >
+                            {correct ? (
+                              <Check className="h-4 w-4" />
+                            ) : wrong ? (
+                              <X className="h-4 w-4" />
+                            ) : (
+                              LETTERS[i]
+                            )}
+                          </span>
+                          <span className="text-sm leading-relaxed">{option}</span>
+                        </label>
+                      )
+                    })}
+                  </div>
+                </fieldset>
+                {phase === 'feedback' ? (
+                  <div
+                    data-quiz-feedback
+                    role="status"
+                    aria-live="polite"
+                    className={cn(
+                      'mt-6 rounded-xl border p-5',
+                      isCorrect
+                        ? 'border-primary/30 bg-primary/5'
+                        : 'border-earth/30 bg-earth/5',
+                    )}
+                  >
+                    <p
+                      className={cn(
+                        'font-semibold',
+                        isCorrect ? 'text-primary' : 'text-earth',
+                      )}
+                    >
+                      {isCorrect
+                        ? 'Boa! Resposta correta.'
+                        : `Quase — a resposta correta é ${LETTERS[question.answer]}.`}
+                    </p>
+                    <p data-quiz-explanation className="mt-3 text-sm leading-relaxed">
+                      {question.explanation}
+                    </p>
+                    <div
+                      data-quiz-fact
+                      className="mt-4 rounded-xl border border-accent/25 bg-accent/10 p-4"
+                    >
+                      <p className="flex items-center gap-2 text-sm font-semibold text-accent-foreground">
+                        <Lightbulb className="h-4 w-4 shrink-0" aria-hidden="true" />
+                        Você sabia?
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                        {question.fact}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
+                <div data-quiz-action className="mt-6">
+                  {phase === 'answering' ? (
+                    <Button
+                      type="button"
+                      className="w-full sm:w-auto"
+                      onClick={confirm}
+                      disabled={choice === null}
+                    >
+                      Confirmar resposta
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      className="w-full sm:w-auto"
+                      onClick={advance}
+                    >
+                      {index + 1 === total ? 'Ver meu diagnóstico' : 'Próxima questão'}
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           ) : null}
