@@ -7,8 +7,17 @@ import { siteSections } from '@/lib/site-data'
 
 /** Barra de controle do modo apresentação. Só existe quando o modo está ativo. */
 export function PresentationBar() {
-  const { active, current, total, next, prev, exit, fullscreenDenied } =
-    usePresentation()
+  const {
+    active,
+    current,
+    total,
+    next,
+    prev,
+    exit,
+    fullscreenDenied,
+    hasMoreContent,
+    hasPreviousContent,
+  } = usePresentation()
 
   if (!active) return null
 
@@ -17,6 +26,7 @@ export function PresentationBar() {
 
   return (
     <div
+      data-presentation-bar
       role="region"
       aria-label="Controles do modo apresentação"
       className="fixed inset-x-0 bottom-0 z-[60] border-t border-border bg-background/95 backdrop-blur-md"
@@ -33,13 +43,21 @@ export function PresentationBar() {
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <div className="min-w-0">
-          <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <p className="flex min-w-0 items-center gap-2 overflow-hidden whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             <MonitorPlay className="h-3.5 w-3.5" aria-hidden="true" />
             Seção <span data-numeric>{current + 1}</span> de{' '}
             <span data-numeric>{total}</span>
             {fullscreenDenied ? (
               <span className="font-normal normal-case tracking-normal">
                 · tela cheia indisponível neste navegador
+              </span>
+            ) : null}
+            {hasMoreContent ? (
+              <span
+                data-presentation-more
+                className="hidden font-normal normal-case tracking-normal md:inline"
+              >
+                · Page Down para continuar nesta seção
               </span>
             ) : null}
           </p>
@@ -57,8 +75,8 @@ export function PresentationBar() {
             variant="outline"
             size="icon"
             onClick={prev}
-            disabled={current === 0}
-            aria-label="Seção anterior"
+            disabled={current === 0 && !hasPreviousContent}
+            aria-label="Voltar na apresentação"
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
@@ -67,8 +85,8 @@ export function PresentationBar() {
             variant="outline"
             size="icon"
             onClick={next}
-            disabled={current === total - 1}
-            aria-label="Próxima seção"
+            disabled={current === total - 1 && !hasMoreContent}
+            aria-label="Avançar na apresentação"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -80,8 +98,9 @@ export function PresentationBar() {
       </div>
 
       <p className="sr-only">
-        Use as setas do teclado ou Page Up e Page Down para navegar entre as
-        seções. Pressione Esc para sair.
+        Use as setas laterais, Page Up e Page Down para percorrer todo o
+        conteúdo; se a seção for longa, ela é concluída antes da próxima.
+        Pressione Esc para sair.
       </p>
     </div>
   )

@@ -19,6 +19,10 @@ export interface ChemistryTopic {
   id: string
   title: string
   icon: LucideIcon
+  /** Ilustração didática exibida no painel do tema */
+  image: string
+  imageAlt: string
+  imagePosition?: string
   /** Explicação simples do conceito */
   explanation: string
   /** Exemplo prático e concreto */
@@ -40,6 +44,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'ph',
     title: 'Solo e pH',
     icon: Gauge,
+    image: '/images/quimica/solo-ph.webp',
+    imageAlt:
+      'Sonda de pH entre raízes de plantas cultivadas em um perfil de solo.',
+    imagePosition: 'center 54%',
     explanation:
       'O pH mede se uma solução é ácida, neutra ou alcalina, numa escala que vai de 0 a 14. No solo, ele descreve a concentração de íons hidrogênio na solução que banha as raízes.',
     example:
@@ -53,6 +61,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'npk',
     title: 'Nitrogênio, fósforo e potássio',
     icon: Atom,
+    image: '/images/quimica/npk.webp',
+    imageAlt:
+      'Planta recebendo três fluxos de nutrientes por diferentes partes das raízes.',
+    imagePosition: 'center 52%',
     explanation:
       'São os três macronutrientes exigidos em maior quantidade pelas plantas, representados pela sigla NPK. Cada um participa de processos diferentes dentro do vegetal.',
     example:
@@ -66,6 +78,9 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'fertilizantes',
     title: 'Fertilizantes',
     icon: FlaskConical,
+    image: '/images/quimica/fertilizantes.webp',
+    imageAlt:
+      'Mão com grânulos minerais ao lado de composto orgânico e raízes no solo.',
     explanation:
       'São materiais que fornecem nutrientes às plantas. Podem ser minerais, obtidos por processos industriais ou de jazidas, ou orgânicos, vindos de matéria de origem animal ou vegetal.',
     example:
@@ -79,6 +94,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'agua',
     title: 'Água',
     icon: Droplets,
+    image: '/images/quimica/agua.webp',
+    imageAlt:
+      'Água transportando partículas minerais pelo solo até as raízes de uma planta.',
+    imagePosition: 'center 56%',
     explanation:
       'A água é o solvente da vida vegetal: os nutrientes só chegam às raízes dissolvidos nela. Sua molécula polar explica por que tantos sais se dissolvem com facilidade.',
     example:
@@ -92,6 +111,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'materia-organica',
     title: 'Matéria orgânica',
     icon: Recycle,
+    image: '/images/quimica/materia-organica.webp',
+    imageAlt:
+      'Palhada em decomposição formando solo escuro com raízes e minhocas.',
+    imagePosition: 'center 58%',
     explanation:
       'É o conjunto de restos vegetais e animais em decomposição no solo, junto com os compostos estáveis resultantes desse processo, conhecidos como húmus.',
     example:
@@ -105,6 +128,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'defensivos',
     title: 'Defensivos agrícolas',
     icon: ShieldAlert,
+    image: '/images/quimica/defensivos-agricolas.webp',
+    imageAlt:
+      'Profissional com equipamento de proteção tratando uma área afetada por pragas.',
+    imagePosition: 'center 30%',
     explanation:
       'São substâncias usadas para controlar organismos que atacam as lavouras. Dividem-se conforme o alvo: herbicidas para plantas daninhas, fungicidas para fungos, inseticidas para insetos.',
     example:
@@ -118,6 +145,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'controle-biologico',
     title: 'Controle biológico',
     icon: Bug,
+    image: '/images/quimica/controle-biologico.webp',
+    imageAlt:
+      'Joaninha e micro-organismos benéficos controlando pulgões em uma folha.',
+    imagePosition: 'center 46%',
     explanation:
       'Usa organismos vivos — insetos, fungos ou bactérias — para controlar pragas, em vez de recorrer apenas a moléculas sintéticas.',
     example:
@@ -131,6 +162,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'sensores-quimicos',
     title: 'Sensores químicos',
     icon: Cpu,
+    image: '/images/quimica/sensores-quimicos.webp',
+    imageAlt:
+      'Sonda no solo conectada a um sensor e a um painel de dados agrícolas.',
+    imagePosition: 'center 48%',
     explanation:
       'São dispositivos que convertem uma propriedade química em sinal elétrico. Um eletrodo de pH, por exemplo, gera uma diferença de potencial que varia com a acidez.',
     example:
@@ -144,6 +179,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'qualidade-solo',
     title: 'Qualidade do solo',
     icon: Layers,
+    image: '/images/quimica/qualidade-solo.webp',
+    imageAlt:
+      'Perfil de solo estruturado com raízes, água, minerais e organismos vivos.',
+    imagePosition: 'center 58%',
     explanation:
       'Reúne características químicas, físicas e biológicas: acidez, disponibilidade de nutrientes, estrutura, porosidade e atividade dos organismos que vivem nele.',
     example:
@@ -157,6 +196,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'amostragem-solo',
     title: 'Amostragem e análise do solo',
     icon: MapPinned,
+    image: '/images/quimica/amostragem-solo.webp',
+    imageAlt:
+      'Agrônomo coletando solo com trado em um talhão dividido em pontos de amostragem.',
+    imagePosition: 'center 30%',
     explanation:
       'O laboratório analisa uma pequena porção de terra, mas a área agrícola varia em relevo, textura, cor e histórico de manejo. Por isso, a coleta precisa reunir amostras de pontos representativos de uma área relativamente uniforme.',
     example:
@@ -174,6 +217,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'caminhos-nutrientes',
     title: 'Caminhos e perdas de nutrientes',
     icon: Route,
+    image: '/images/quimica/caminhos-nutrientes.webp',
+    imageAlt:
+      'Nutrientes sendo absorvidos pelas raízes ou perdidos pela água, erosão e atmosfera.',
+    imagePosition: 'center 56%',
     explanation:
       'Depois de chegar ao solo, um nutriente pode ser absorvido pela planta, permanecer retido, reagir com minerais, mover-se com a água ou voltar à atmosfera. O destino depende da forma química, do solo, do clima e do manejo.',
     example:
@@ -191,6 +238,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'carbono-solo',
     title: 'Carbono, solo e atmosfera',
     icon: CloudSun,
+    image: '/images/quimica/carbono-solo.webp',
+    imageAlt:
+      'Ciclo do carbono entre atmosfera, plantas, raízes, palhada e matéria orgânica do solo.',
+    imagePosition: 'center 52%',
     explanation:
       'Na fotossíntese, as plantas retiram dióxido de carbono da atmosfera e transformam esse carbono em biomassa. Raízes e resíduos levam parte dele ao solo, enquanto respiração e decomposição devolvem parte à atmosfera.',
     example:
@@ -208,6 +259,10 @@ export const chemistryTopics: ChemistryTopic[] = [
     id: 'conservacao',
     title: 'Conservação de alimentos',
     icon: Snowflake,
+    image: '/images/quimica/conservacao-alimentos.webp',
+    imageAlt:
+      'Frutas e hortaliças recém-colhidas sob refrigeração, ao lado de uma maçã oxidada.',
+    imagePosition: 'center 44%',
     explanation:
       'Depois da colheita, a química continua atuando: reações de oxidação, ação de enzimas e crescimento de micro-organismos continuam alterando o alimento.',
     example:
@@ -220,4 +275,4 @@ export const chemistryTopics: ChemistryTopic[] = [
 ]
 
 export const chemistryIntro =
-  'A química não entra na agricultura só na fase dos fertilizantes. Ela está na acidez do solo, na água que transporta os nutrientes, na molécula que protege a lavoura e na reação que estraga o alimento depois da colheita.'
+  'Do pH à conservação dos alimentos, ela está na nutrição, na proteção e na qualidade da produção.'

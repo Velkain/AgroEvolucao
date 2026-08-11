@@ -54,7 +54,7 @@ const activities: ActivityLink[] = [
     icon: Brain,
     title: 'Quiz no estilo ENEM',
     description:
-      'Doze questões com explicação em cada resposta e revisão dos erros ao final.',
+      'Vinte questões com alternativas embaralhadas, explicação em cada resposta e revisão dos erros ao final.',
     location: 'Seção própria',
   },
 ]

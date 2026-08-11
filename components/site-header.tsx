@@ -20,7 +20,9 @@ import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const active = useActiveSection()
+  const observedSection = useActiveSection()
+  const active =
+    observedSection === 'caso-decisao' ? 'dados' : observedSection
   const { enter } = usePresentation()
   const primaryNavIds = new Set([
     'inicio',

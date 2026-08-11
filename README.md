@@ -32,7 +32,8 @@ O site foi pensado para dois contextos:
 - comparação entre benefícios, desafios e sustentabilidade;
 - atividades de associação e ordenação;
 - quiz no estilo ENEM com explicação das respostas;
-- modo apresentação com tela cheia, progresso e navegação entre seções;
+- modo apresentação com tela cheia, progresso e navegação segura por seções e
+  páginas internas;
 - abertura cinematográfica com porteiras rurais e opção de pular;
 - seção de integrantes e identificação da instituição de ensino.
 
@@ -43,8 +44,9 @@ O site foi pensado para dois contextos:
 1. Abra o endereço de produção em uma janela anônima.
 2. Teste o link usando a mesma rede que será utilizada na apresentação.
 3. Clique em **Modo apresentação** no cabeçalho.
-4. Navegue pelas seções usando os botões da barra, `Page Up`, `Page Down` ou as
-   setas do teclado.
+4. Use os botões ou as setas laterais para avançar e voltar. Em seções longas,
+   os controles e `Page Up`/`Page Down` percorrem todo o conteúdo antes de mudar
+   de seção.
 5. Leve um QR Code do endereço para quem quiser acompanhar pelo celular.
 
 Se a API de clima não responder, o painel usa automaticamente uma medição real

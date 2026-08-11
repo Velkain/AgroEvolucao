@@ -1,11 +1,6 @@
-import { ArrowDown, UserCheck } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { stagger } from '@/lib/animation'
-import {
-  dataFlowSteps,
-  dataFlowExample,
-  dataFlowHighlight,
-} from '@/lib/data-flow-data'
+import { dataFlowSteps } from '@/lib/data-flow-data'
 
 export function DataFlowSection() {
   return (
@@ -35,7 +30,10 @@ export function DataFlowSection() {
         */}
         <ol className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {dataFlowSteps.map((step, index) => (
-            <Reveal as="li" key={step.id} delay={stagger(index)}
+            <Reveal
+              as="li"
+              key={step.id}
+              delay={stagger(index)}
               className="relative flex gap-4 rounded-xl border border-border bg-card p-5 elev-1"
             >
               <div className="flex flex-col items-center">
@@ -52,7 +50,10 @@ export function DataFlowSection() {
 
               <div className="min-w-0">
                 <h3 className="flex items-center gap-2 font-serif text-lg font-semibold text-foreground">
-                  <step.icon className="h-4.5 w-4.5 text-tech" aria-hidden="true" />
+                  <step.icon
+                    className="h-4.5 w-4.5 text-tech"
+                    aria-hidden="true"
+                  />
                   {step.label}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -72,54 +73,6 @@ export function DataFlowSection() {
             </Reveal>
           ))}
         </ol>
-
-        {/* Exemplo percorrendo o ciclo inteiro */}
-        <div className="mx-auto mt-14 max-w-3xl">
-          <h3 className="font-serif text-xl font-semibold text-foreground">
-            Um caso, do sensor à decisão
-          </h3>
-          <ol className="mt-5 space-y-0">
-            {dataFlowExample.map((line, index) => (
-              <li key={`${line.step}-${index}`} className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-tech"
-                  />
-                  {index < dataFlowExample.length - 1 ? (
-                    <span
-                      aria-hidden="true"
-                      className="w-px flex-1 bg-border"
-                    />
-                  ) : null}
-                </div>
-                <div className="pb-5">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-tech">
-                    {line.step}
-                  </span>
-                  <p className="mt-0.5 leading-relaxed text-foreground/90">
-                    {line.text}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-2 flex items-start gap-4 rounded-2xl border border-primary/25 bg-primary/5 p-6">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <UserCheck className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <p className="text-balance font-serif text-lg leading-relaxed text-foreground sm:text-xl">
-              {dataFlowHighlight}
-            </p>
-          </div>
-
-          <p className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            Adiante, este mesmo ciclo roda com dados reais de uma cidade
-            agrícola.
-          </p>
-        </div>
       </div>
     </section>
   )

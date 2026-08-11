@@ -251,30 +251,224 @@
 }
 
 /*
- * Modo apresentação. Não transforma seções em slides nem trava a rolagem:
- * apenas amplia o que precisa ser lido a cinco metros e recua o secundário.
+ * Modo apresentação: o conteúdo e os controles ocupam linhas diferentes do
+ * viewport. Assim a barra nunca cobre o fim de um card e cada seção curta se
+ * comporta como um slide; seções extensas continuam roláveis por inteiro.
  */
 .presenting {
   /*
-   * Um único ajuste na raiz amplia tudo de uma vez. Como a rampa tipográfica
-   * e o espaçamento são todos em rem, as proporções documentadas em DESIGN.md
-   * se mantêm exatamente — parágrafo de abertura continua maior que corpo, que
-   * continua maior que nota. Redefinir tamanhos elemento a elemento achataria
-   * a hierarquia justamente onde ela mais importa, que é a leitura à distância.
+   * Escala responsiva à altura disponível. O valor anterior (112,5%) também
+   * ampliava `py`, margens e cards, que era justamente a origem dos cortes.
    */
-  font-size: 112.5%;
-
-  /* Espaço para a barra de controle fixa no rodapé */
-  scroll-padding-bottom: 7rem;
+  font-size: clamp(14px, min(1vw, 1.7vh), 16px);
+  overflow: hidden;
+  overflow: clip;
 }
 
 .presenting body {
-  padding-bottom: 6rem;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overflow: clip;
 }
 
-/* Rodapés de aviso e créditos saem de cena, sem sumir para leitor de tela */
-.presenting [data-presentation="secondary"] {
+.presenting .presentation-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* Cabeçalho e rodapé pertencem ao site; o palco tem seus próprios controles. */
+.presenting .presentation-shell > header,
+.presenting .presentation-shell > footer {
+  display: none;
+}
+
+.presenting #conteudo {
+  grid-row: 1;
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding-top: 0 !important;
+  scrollbar-width: none;
+  scroll-padding: 0;
+  /* Mudanças de estado em quizzes não devem reencaixar a página sozinhas. */
+  scroll-snap-type: none;
+}
+
+.presenting #conteudo::-webkit-scrollbar {
+  display: none;
+}
+
+.presenting #conteudo > section {
+  display: flex;
+  align-items: center;
+  min-height: 100% !important;
+  padding-block: clamp(1.5rem, 4vh, 3.5rem) !important;
+  scroll-margin: 0 !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.presenting #conteudo > section > div {
+  width: 100%;
+}
+
+/* Compacta apenas os grandes intervalos entre os blocos de cada slide. */
+.presenting #conteudo > section > div > :is(
+    [class~='mt-12'],
+    [class~='mt-14'],
+    [class~='mt-16']
+  ) {
+  margin-top: clamp(1.25rem, 3vh, 2.5rem) !important;
+}
+
+/* A barra participa do grid: sua altura real é sempre reservada pelo palco. */
+.presenting [data-presentation-bar] {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 40;
+  grid-row: 2;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Rodapés de aviso e créditos recuam sem desaparecer para leitores de tela. */
+.presenting [data-presentation='secondary'] {
   opacity: 0.55;
+}
+
+/* Mantém os quatro pilares mais próximos das bordas úteis do slide. */
+.presenting #sustentabilidade {
+  padding-block: clamp(0.75rem, 1.5vh, 1.25rem) !important;
+}
+
+.presenting [data-sustainability-heading] h2 {
+  font-size: clamp(1.75rem, 4vh, 2.25rem);
+  line-height: 1.05;
+}
+
+.presenting [data-sustainability-heading] p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.presenting [data-sustainability-grid] {
+  gap: clamp(0.5rem, 1.25vh, 0.75rem);
+  margin-top: clamp(0.75rem, 1.5vh, 1rem) !important;
+}
+
+.presenting [data-sustainability-card] {
+  padding: clamp(0.75rem, 1.5vh, 1rem) !important;
+}
+
+.presenting [data-sustainability-summary] {
+  margin-top: 0.5rem;
+  line-height: 1.35;
+}
+
+.presenting [data-sustainability-list] {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.625rem;
+  padding-top: 0.625rem;
+}
+
+.presenting [data-sustainability-list] > li {
+  margin-block: 0 !important;
+  line-height: 1.35;
+}
+
+.presenting [data-sustainability-note] {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+/*
+ * A seção de Química tem treze abas. No palco, a densidade aumenta apenas no
+ * índice e nos intervalos; o conteúdo principal e a arte continuam legíveis.
+ */
+.presenting #quimica {
+  padding-block: clamp(1rem, 2vh, 1.5rem) !important;
+}
+
+.presenting [data-chemistry-layout] {
+  gap: 1rem;
+  margin-top: clamp(0.75rem, 2vh, 1.25rem) !important;
+}
+
+.presenting [data-chemistry-tabs] {
+  gap: 0.125rem;
+}
+
+.presenting [data-chemistry-tab] {
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.presenting [data-chemistry-tab-icon] {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.presenting [data-chemistry-panel] {
+  padding: clamp(0.75rem, 2vh, 1.25rem);
+}
+
+.presenting [data-chemistry-explanation],
+.presenting [data-chemistry-details],
+.presenting [data-chemistry-note],
+.presenting [data-chemistry-artwork] {
+  margin-top: clamp(0.375rem, 1vh, 0.75rem);
+}
+
+.presenting [data-chemistry-artwork] {
+  min-height: 9rem !important;
+}
+
+.presenting [data-chemistry-safety] {
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+[data-chemistry-tabs] {
+  scrollbar-width: none;
+}
+
+[data-chemistry-tabs]::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 48rem) and (max-height: 760px) {
+  .presenting #conteudo > section {
+    padding-block: 1.25rem !important;
+  }
+
+  .presenting #conteudo > section > div > :is(
+      [class~='mt-12'],
+      [class~='mt-14'],
+      [class~='mt-16']
+    ) {
+    margin-top: 1.25rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presenting #conteudo {
+    scroll-behavior: auto;
+  }
 }
 
 /* Trama de pontos sutil usada em blocos de destaque */

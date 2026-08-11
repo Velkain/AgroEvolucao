@@ -24,10 +24,10 @@ export async function SmartFarmSection() {
             Demonstração de fazenda inteligente
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-            O ciclo da seção anterior, rodando com dados reais de clima e solo de
-            Sorriso, no Mato Grosso — o município que mais produz soja no Brasil.
-            O que é medição está marcado como medição; o que é hipótese está
-            marcado como hipótese.
+            O ciclo apresentado anteriormente, rodando com dados reais de clima
+            e solo de Sorriso, no Mato Grosso — o município que mais produz soja
+            no Brasil. O que é medição está marcado como medição; o que é
+            hipótese está marcado como hipótese.
           </p>
         </div>
 

@@ -82,6 +82,12 @@ export const siteSections: SiteSection[] = [
     inNav: true,
   },
   {
+    id: 'caso-decisao',
+    label: 'Caso prático',
+    presentationLabel: 'Do sensor à decisão',
+    inNav: false,
+  },
+  {
     id: 'quimica',
     label: 'Química',
     presentationLabel: 'A química no campo',

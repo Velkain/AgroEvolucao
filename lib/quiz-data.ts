@@ -215,7 +215,143 @@ export const quizQuestions: QuizQuestion[] = [
     explanation:
       'A decomposição da palhada incorpora matéria orgânica ao solo, o que melhora a estrutura, aumenta a retenção de água e funciona como reserva gradual de nutrientes.',
   },
+  {
+    id: 'q-escala-logaritmica-ph',
+    difficulty: 'desafio',
+    topic: 'Química do solo',
+    statement:
+      'Duas amostras de solo, medidas nas mesmas condições, apresentam pH 5,0 e pH 6,0. Considerando o caráter logarítmico dessa escala, é correto afirmar que:',
+    options: [
+      'A amostra de pH 5,0 apresenta cerca de dez vezes maior atividade de íons H⁺ que a de pH 6,0.',
+      'A amostra de pH 5,0 apresenta apenas duas vezes maior atividade de íons H⁺.',
+      'As duas amostras apresentam a mesma condição de acidez.',
+      'A amostra de pH 6,0 apresenta dez vezes maior atividade de íons H⁺.',
+      'A amostra de pH 5,0 apresenta cem vezes maior atividade de íons H⁺.',
+    ],
+    answer: 0,
+    explanation:
+      'Cada unidade na escala de pH corresponde a uma variação de dez vezes na atividade dos íons H⁺. Assim, a amostra de pH 5,0 tem cerca de dez vezes mais atividade de H⁺ que a de pH 6,0.',
+  },
+  {
+    id: 'q-amostragem-composta',
+    difficulty: 'fundamentos',
+    topic: 'Amostragem de solo',
+    statement:
+      'Para que o resultado de uma análise represente uma área de manejo considerada relativamente uniforme, o procedimento de coleta mais adequado é:',
+    options: [
+      'Retirar toda a amostra do ponto visualmente mais fértil.',
+      'Misturar solo superficial e profundo sem registrar as profundidades.',
+      'Coletar porções em vários pontos representativos, na mesma profundidade, e reuni-las em uma amostra composta.',
+      'Coletar somente nas bordas, onde o acesso é mais fácil.',
+      'Misturar solos de áreas com relevo, cor e manejo distintos em um único recipiente.',
+    ],
+    answer: 2,
+    explanation:
+      'A amostra composta reúne porções de diferentes pontos representativos de uma área relativamente uniforme. Misturar profundidades ou regiões muito diferentes pode ocultar a variabilidade e comprometer a decisão.',
+  },
+  {
+    id: 'q-eutrofizacao',
+    difficulty: 'aplicacao',
+    topic: 'Sustentabilidade',
+    statement:
+      'Após chuvas intensas em uma região agrícola, um reservatório recebeu nutrientes transportados pelo escoamento superficial. Dias depois, ocorreu intensa proliferação de algas e redução da quantidade de peixes. A relação que melhor explica o fenômeno é:',
+    options: [
+      'Os nutrientes elevaram o pH e eliminaram imediatamente todos os organismos aquáticos.',
+      'O fósforo evaporou da água e provocou resfriamento do reservatório.',
+      'Os sedimentos aumentaram permanentemente a entrada de luz na água.',
+      'As algas produziram oxigênio que permaneceu acumulado indefinidamente.',
+      'O excesso de nitrogênio e fósforo favoreceu as algas, cuja decomposição consumiu oxigênio dissolvido.',
+    ],
+    answer: 4,
+    explanation:
+      'O enriquecimento da água por nitrogênio e fósforo pode causar eutrofização. A proliferação e posterior decomposição da biomassa consomem oxigênio dissolvido, prejudicando peixes e outros organismos.',
+  },
+  {
+    id: 'q-condutividade-sais',
+    difficulty: 'desafio',
+    topic: 'Sensores químicos',
+    statement:
+      'Um sensor registra aumento da condutividade elétrica do solo após uma operação de irrigação. A interpretação tecnicamente mais responsável dessa leitura é:',
+    options: [
+      'Ela pode indicar maior presença de íons dissolvidos, mas não identifica quais são e deve ser interpretada com umidade, calibração e análises complementares.',
+      'Ela identifica diretamente a quantidade exata de nitrogênio disponível.',
+      'Ela comprova que todos os nutrientes estão em níveis adequados.',
+      'Ela demonstra, por si só, que o solo precisa receber mais fertilizante.',
+      'Ela substitui completamente a análise laboratorial do solo.',
+    ],
+    answer: 0,
+    explanation:
+      'A condutividade elétrica responde à presença de sais dissolvidos, mas também varia com umidade, textura e temperatura. A leitura é um indício, não a identificação de um nutriente específico nem uma recomendação automática.',
+  },
+  {
+    id: 'q-controle-biologico-clima',
+    difficulty: 'aplicacao',
+    topic: 'Controle biológico',
+    statement:
+      'O mesmo agente de controle biológico apresentou bom desempenho em uma área úmida e resultado limitado em outra área submetida a condições mais secas. A diferença pode ser explicada porque:',
+    options: [
+      'Agentes biológicos sempre funcionam somente em solos alagados.',
+      'O resultado prova que a praga se tornou resistente a qualquer forma de controle.',
+      'A sobrevivência e a atividade de organismos usados como bioinsumos dependem das condições ambientais e do manejo.',
+      'Temperatura e umidade afetam apenas produtos sintéticos.',
+      'Todo controle biológico produz o mesmo resultado, independentemente do ambiente.',
+    ],
+    answer: 2,
+    explanation:
+      'Bioinsumos podem conter organismos vivos ou produtos derivados deles. Temperatura, umidade, armazenamento e momento de aplicação influenciam sua viabilidade e eficiência.',
+  },
+  {
+    id: 'q-refrigeracao-alimentos',
+    difficulty: 'fundamentos',
+    topic: 'Conservação de alimentos',
+    statement:
+      'Uma fruta cortada escurece mais lentamente quando é mantida sob refrigeração. Isso ocorre principalmente porque a baixa temperatura:',
+    options: [
+      'Retira completamente o oxigênio ao redor da fruta.',
+      'Destrói de forma imediata todas as enzimas do alimento.',
+      'Congela toda a água presente nas células.',
+      'Reduz a velocidade de reações enzimáticas e do crescimento microbiano, sem necessariamente interrompê-los.',
+      'Aumenta a quantidade de água disponível para os micro-organismos.',
+    ],
+    answer: 3,
+    explanation:
+      'A refrigeração desacelera reações químicas, atividade enzimática e crescimento de micro-organismos. Ela aumenta o tempo de conservação, mas não interrompe completamente esses processos.',
+  },
+  {
+    id: 'q-gnss-prescricao',
+    difficulty: 'aplicacao',
+    topic: 'Agricultura 4.0',
+    statement:
+      'Uma máquina recebe um mapa que recomenda quantidades diferentes de insumo para cada zona do talhão. Durante a operação, a principal função do GNSS é:',
+    options: [
+      'Medir em laboratório o pH do solo durante o deslocamento.',
+      'Informar a posição da máquina para que o controlador aplique a dose correspondente a cada zona.',
+      'Prever com certeza a ocorrência de chuva nas horas seguintes.',
+      'Produzir os nutrientes aplicados pela máquina.',
+      'Eliminar a necessidade de calibração do equipamento.',
+    ],
+    answer: 1,
+    explanation:
+      'O GNSS informa onde a máquina está. O controlador cruza essa posição com o mapa de prescrição e ajusta a dose. Se a posição estiver incorreta, o insumo pode ser aplicado na zona errada.',
+  },
+  {
+    id: 'q-balanco-carbono-solo',
+    difficulty: 'desafio',
+    topic: 'Carbono no solo',
+    statement:
+      'Após adotar práticas que mantêm mais resíduos vegetais sobre o solo, uma propriedade registra maior teor de matéria orgânica em uma medição. A conclusão cientificamente mais adequada é:',
+    options: [
+      'Todo o carbono incorporado ficará armazenado de forma permanente.',
+      'A propriedade passou automaticamente a emitir zero gases de efeito estufa.',
+      'A decomposição da matéria orgânica foi completamente interrompida.',
+      'O resultado é compatível com maior entrada de carbono, mas o balanço exige acompanhamento no tempo e avaliação do sistema completo.',
+      'O carbono presente no solo não pode retornar à atmosfera.',
+    ],
+    answer: 3,
+    explanation:
+      'Resíduos e raízes podem aumentar a entrada de carbono no solo, mas parte dele volta à atmosfera por respiração e decomposição. Uma medição isolada não demonstra armazenamento permanente nem define o balanço total.',
+  },
 ]
 
 export const quizIntro =
-  'Doze questões no estilo ENEM sobre tudo que foi visto até aqui. Cada resposta vem com explicação — errar aqui é parte do estudo.'
+  'Vinte questões no estilo ENEM sobre tudo que foi visto até aqui. As perguntas e alternativas mudam de ordem, e cada resposta vem com explicação.'

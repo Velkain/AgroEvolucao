@@ -28,7 +28,7 @@ export function SummarySection() {
         </div>
 
         {/* A trajetória inteira numa linha */}
-        <ol className="mt-14 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 [scrollbar-width:thin] lg:justify-center lg:overflow-visible">
+        <ol className="mt-14 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 [scrollbar-width:thin] xl:justify-center xl:overflow-visible">
           {summaryMilestones.map((milestone, index) => (
             <li
               key={milestone.label}

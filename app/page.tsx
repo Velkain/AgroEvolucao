@@ -4,6 +4,7 @@ import { LessonObjective } from '@/components/lesson-objective'
 import { IntroductionSection } from '@/components/introduction-section'
 import { EvolutionTimeline } from '@/components/evolution-timeline'
 import { DataFlowSection } from '@/components/data-flow-section'
+import { DecisionCaseSection } from '@/components/decision-case-section'
 import { ChemistrySection } from '@/components/chemistry-section'
 import { TechnologyAtlas } from '@/components/technology-atlas'
 import { SmartFarmSection } from '@/components/smart-farm-section'
@@ -23,7 +24,7 @@ export default function HomePage() {
   return (
     <SplashGate>
       <PresentationProvider>
-        <div className="min-h-screen bg-background">
+        <div className="presentation-shell min-h-screen bg-background">
           <a
             href="#conteudo"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -44,6 +45,7 @@ export default function HomePage() {
 
             {/* Como a agricultura moderna decide */}
             <DataFlowSection />
+            <DecisionCaseSection />
             <ChemistrySection />
             <TechnologyAtlas />
             <SmartFarmSection />

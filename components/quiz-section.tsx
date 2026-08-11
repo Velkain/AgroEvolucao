@@ -13,14 +13,20 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { quizQuestions, quizIntro, type QuizQuestion } from '@/lib/quiz-data'
+import {
+  prepareQuizQuestions,
+  restorePreparedQuestions,
+  type PreparedQuizQuestion,
+} from '@/lib/quiz-randomization'
 import { cn } from '@/lib/utils'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E']
 type Phase = 'intro' | 'answering' | 'feedback' | 'done'
-const QUIZ_STORAGE_KEY = 'agroevolucao:quiz:v2'
+const QUIZ_STORAGE_KEY = 'agroevolucao:quiz:v3'
 
 interface SavedQuiz {
   questionIds: string[]
+  optionOrders: Record<string, number[]>
   index: number
   choice: number | null
   phase: Exclude<Phase, 'intro'>
@@ -30,7 +36,7 @@ interface SavedQuiz {
 }
 
 export function QuizSection() {
-  const [questions, setQuestions] = useState<QuizQuestion[]>([])
+  const [questions, setQuestions] = useState<PreparedQuizQuestion[]>([])
   const [index, setIndex] = useState(0)
   const [choice, setChoice] = useState<number | null>(null)
   const [phase, setPhase] = useState<Phase>('intro')
@@ -55,6 +61,9 @@ export function QuizSection() {
     if (phase === 'intro' || questions.length === 0) return
     const session: SavedQuiz = {
       questionIds: questions.map((item) => item.id),
+      optionOrders: Object.fromEntries(
+        questions.map((item) => [item.id, item.optionOrder]),
+      ),
       index,
       choice,
       phase,
@@ -90,7 +99,7 @@ export function QuizSection() {
     const pool = difficulty
       ? quizQuestions.filter((item) => item.difficulty === difficulty)
       : quizQuestions
-    setQuestions([...pool].sort(() => Math.random() - 0.5))
+    setQuestions(prepareQuizQuestions(pool))
     setIndex(0)
     setChoice(null)
     setAnswers([])
@@ -101,10 +110,20 @@ export function QuizSection() {
 
   function resume() {
     if (!savedQuiz) return
-    const restored = savedQuiz.questionIds
-      .map((id) => quizQuestions.find((item) => item.id === id))
-      .filter((item): item is QuizQuestion => Boolean(item))
-    if (restored.length === 0) return
+    const restored = restorePreparedQuestions(
+      savedQuiz.questionIds,
+      savedQuiz.optionOrders,
+      quizQuestions,
+    )
+    if (!restored) {
+      setSavedQuiz(null)
+      try {
+        window.localStorage.removeItem(QUIZ_STORAGE_KEY)
+      } catch {
+        // O quiz ainda pode iniciar uma rodada nova sem armazenamento.
+      }
+      return
+    }
     setQuestions(restored)
     setIndex(Math.min(savedQuiz.index, restored.length - 1))
     setChoice(savedQuiz.choice)
@@ -143,7 +162,7 @@ export function QuizSection() {
             <div className="text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-tech/12 text-tech"><Sparkles className="h-7 w-7" /></span>
               <h3 className="mt-4 font-serif text-2xl font-semibold">Escolha seu desafio</h3>
-              <p className="mx-auto mt-2 max-w-xl text-muted-foreground">As perguntas mudam de ordem a cada rodada. Você recebe explicação imediata e um diagnóstico dos temas no final.</p>
+              <p className="mx-auto mt-2 max-w-xl text-muted-foreground">As perguntas e as alternativas mudam de ordem a cada rodada. Você recebe explicação imediata e um diagnóstico dos temas no final.</p>
               {savedQuiz && savedQuiz.phase !== 'done' ? (
                 <button type="button" onClick={resume} className="mt-6 w-full rounded-xl border border-accent/40 bg-accent/10 p-4 text-left transition hover:bg-accent/15 focus-visible:outline-2 focus-visible:outline-ring">
                   <span className="text-xs font-semibold uppercase tracking-wider text-accent-foreground">Progresso salvo neste aparelho</span>
@@ -211,8 +230,8 @@ export function QuizSection() {
                     const selected = choice === i
                     const correct = phase === 'feedback' && i === question.answer
                     const wrong = phase === 'feedback' && selected && !correct
-                    return <label key={option} className={cn('flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 transition', correct && 'border-primary/50 bg-primary/8', wrong && 'border-earth/50 bg-earth/8', phase === 'answering' && selected && 'border-primary bg-primary/5', phase === 'answering' && !selected && 'hover:bg-muted')}>
-                      <input className="sr-only" type="radio" name={question.id} checked={selected} onChange={() => setChoice(i)} />
+                    return <label key={question.optionOrder[i]} className={cn('relative flex items-start gap-3 rounded-xl border p-3.5 transition focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring', phase === 'answering' ? 'cursor-pointer' : 'cursor-default', correct && 'border-primary/50 bg-primary/8', wrong && 'border-earth/50 bg-earth/8', phase === 'answering' && selected && 'border-primary bg-primary/5', phase === 'answering' && !selected && 'hover:bg-muted')}>
+                      <input className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0 disabled:cursor-default" type="radio" name={question.id} checked={selected} onChange={() => setChoice(i)} />
                       <span className={cn('flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-bold', correct ? 'bg-primary text-primary-foreground' : wrong ? 'bg-earth text-earth-foreground' : selected ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground')}>{correct ? <Check className="h-4 w-4" /> : wrong ? <X className="h-4 w-4" /> : LETTERS[i]}</span>
                       <span className="text-sm leading-relaxed">{option}</span>
                     </label>

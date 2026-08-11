@@ -11,10 +11,13 @@ export function SustainabilitySection() {
     <section
       id="sustentabilidade"
       aria-labelledby="sustentabilidade-title"
-      className="scroll-mt-20 border-t border-border/60 bg-secondary/25 py-20 sm:py-24"
+      className="scroll-mt-20 border-t border-border/60 bg-secondary/25 py-14 sm:py-16"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+        <div
+          data-sustainability-heading
+          className="mx-auto max-w-3xl text-center"
+        >
           <h2
             id="sustentabilidade-title"
             className="text-balance font-serif text-3xl font-semibold text-primary sm:text-4xl"
@@ -27,10 +30,14 @@ export function SustainabilitySection() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <div
+          data-sustainability-grid
+          className="mt-14 grid gap-5 md:grid-cols-2"
+        >
           {sustainabilityPillars.map((pillar, index) => (
             <Reveal key={pillar.id} delay={stagger(index)}>
             <article
+              data-sustainability-card
               aria-labelledby={`pilar-${pillar.id}`}
               className="rounded-2xl border border-primary/20 bg-background p-6 elev-1 sm:p-8"
             >
@@ -46,11 +53,17 @@ export function SustainabilitySection() {
                 </h3>
               </div>
 
-              <p className="mt-4 text-pretty leading-relaxed text-foreground/85">
+              <p
+                data-sustainability-summary
+                className="mt-4 text-pretty leading-relaxed text-foreground/85"
+              >
                 {pillar.summary}
               </p>
 
-              <ul className="mt-5 space-y-2 border-t border-border pt-5">
+              <ul
+                data-sustainability-list
+                className="mt-5 space-y-2 border-t border-border pt-5"
+              >
                 {pillar.items.map((item) => (
                   <li
                     key={item}
@@ -69,7 +82,11 @@ export function SustainabilitySection() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-xl border border-border bg-background/70 p-4 text-sm leading-relaxed text-muted-foreground sm:p-5">
+        <p
+          data-sustainability-note
+          data-presentation="secondary"
+          className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-xl border border-border bg-background/70 p-4 text-sm leading-relaxed text-muted-foreground sm:p-5"
+        >
           <Scale className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
           {sustainabilityNote}
         </p>
